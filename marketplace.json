@@ -1,0 +1,14 @@
+{
+  "name": "vincentlauriat-toolkit",
+  "displayName": "Vincent Lauriat — Toolkit",
+  "description": "A personal collection of Claude Code plugins for strategic audit, IT governance, and AI research — built as a hobby by Vincent Lauriat.",
+  "homepage": "https://github.com/vincentlauriat/toolkit",
+  "plugins": [
+    {
+      "name": "audit-report",
+      "description": "Generate exhaustive audit dossiers on any company, product, technology, or market — like a strategy consulting firm. Produces structured Markdown files covering history, market, technical, pricing, competition, financials, and future outlook.",
+      "source": "vincentlauriat/audit-report",
+      "homepage": "https://github.com/vincentlauriat/audit-report"
+    }
+  ]
+}

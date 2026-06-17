@@ -7,8 +7,13 @@
     {
       "name": "audit-report",
       "description": "Generate exhaustive audit dossiers on any company, product, technology, or market — like a strategy consulting firm. Produces structured Markdown files covering history, market, technical, pricing, competition, financials, and future outlook.",
-      "source": "vincentlauriat/audit-report",
-      "homepage": "https://github.com/vincentlauriat/audit-report"
+      "source": {
+        "type": "git-subdir",
+        "repo": "vincentlauriat/AuditViewer",
+        "path": "skills/audit-report",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/vincentlauriat/AuditViewer/tree/main/skills/audit-report"
     }
   ]
 }

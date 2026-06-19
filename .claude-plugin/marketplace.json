@@ -12,7 +12,7 @@
       "description": "Generate exhaustive audit dossiers on any company, product, technology, or market — like a strategy consulting firm. Produces structured Markdown files covering history, market, technical, pricing, competition, financials, and future outlook.",
       "source": {
         "source": "git-subdir",
-        "url": "vincentlauriat/AuditViewer",
+        "url": "https://github.com/vincentlauriat/AuditViewer.git",
         "path": "skills/audit-report",
         "ref": "main"
       },

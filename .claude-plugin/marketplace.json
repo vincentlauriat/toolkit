@@ -1,7 +1,7 @@
 {
   "name": "vincentlauriat-toolkit",
   "displayName": "Vincent Lauriat — Toolkit",
-  "description": "A personal collection of Claude Code plugins for strategic audit, IT governance, and AI research — built as a hobby by Vincent Lauriat.",
+  "description": "A personal collection of Claude Code plugins for strategic audit, product framing, IT governance, and AI research — built as a hobby by Vincent Lauriat.",
   "owner": {
     "name": "Vincent Lauriat"
   },
@@ -17,6 +17,11 @@
         "ref": "main"
       },
       "homepage": "https://vincentlauriat.github.io/AuditViewer/"
+    },
+    {
+      "name": "app-specs",
+      "description": "Interview the user about an app idea, then write six consistent framing documents: PRD, TRD, app flow, UI/UX design brief, backend schema and implementation plan.",
+      "source": "./plugins/app-specs"
     }
   ]
 }

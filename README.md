@@ -30,3 +30,14 @@ Generate exhaustive audit dossiers on any company, product, technology, or marke
 Produces a structured `audit-{subject}/` folder with up to 10 Markdown sections (history, market, technical, pricing, competition, financials, future outlook, ESG, SWOT, HR) plus machine-readable JSON artifacts (`_data.json`, `_sources.json`, `_manifest.json`).
 
 **Options**: `--depth quick|full` · `--lang en|fr` · `--mode parallel|sequential|solo` · `--swot` · `--esg` · `--rh` · `--brief` · `--watch` · `--app-mode`
+
+### `app-specs`
+
+Frame a new app before coding: a short interview (five rounds, multiple-choice where possible), then six consistent documents written at the project root.
+
+```shell
+/app-specs
+/app-specs "an app that suggests recipes from what's left in the fridge"
+```
+
+Produces `PRD.md`, `TRD.md`, `AppFlow.md`, `DesignBrief.md`, `BackendSchema.md` and `ImplementationPlan.md`. Unknown answers become flagged assumptions collected in the PRD's open questions; a traceability table links every priority feature to its screens, entities and tasks, and is checked before the skill reports done.

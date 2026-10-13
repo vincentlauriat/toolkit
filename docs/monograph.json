@@ -1,0 +1,245 @@
+{
+  "name": "toolkit",
+  "no": "10",
+  "repo": "vincentlauriat/toolkit",
+  "url": "https://vincentlauriat.github.io/toolkit/",
+  "accent": "#c084fc",
+  "meta": {
+    "title": "toolkit — Claude Code plugins by Vincent Lauriat",
+    "description": "A personal collection of Claude Code plugins. Its flagship plugin, audit-report, generates exhaustive audit dossiers on any company, product, technology or market.",
+    "favicon": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0a0f'/%3E%3Cpath d='M14 22l10 10-10 10' fill='none' stroke='%23c084fc' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M32 42h18' stroke='%23c084fc' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E"
+  },
+  "role": {
+    "en": "Claude Code plugin marketplace",
+    "fr": "Marketplace de plugins Claude Code",
+    "zh": "Claude Code 外掛市集"
+  },
+  "thesis": {
+    "en": "A personal collection of Claude Code plugins.",
+    "fr": "Une collection personnelle de plugins Claude Code.",
+    "zh": "一套個人的 Claude Code 外掛集合。"
+  },
+  "lede": {
+    "en": "Built as a hobby by Vincent Lauriat.",
+    "fr": "Construite par Vincent Lauriat, sur son temps libre.",
+    "zh": "由 Vincent Lauriat 業餘打造。"
+  },
+  "actions": [
+    {
+      "primary": true,
+      "href": "https://github.com/vincentlauriat/toolkit",
+      "label": {
+        "en": "View on GitHub",
+        "fr": "Voir sur GitHub",
+        "zh": "在 GitHub 上檢視"
+      }
+    },
+    {
+      "href": "#install",
+      "label": {
+        "en": "Install",
+        "fr": "Installer",
+        "zh": "安裝"
+      }
+    }
+  ],
+  "facts": [
+    {
+      "k": {
+        "en": "Works with",
+        "fr": "Fonctionne avec",
+        "zh": "支援"
+      },
+      "v": "Claude Code"
+    },
+    {
+      "k": {
+        "en": "Add it",
+        "fr": "Ajout",
+        "zh": "加入"
+      },
+      "v": "<code>/plugin marketplace add vincentlauriat/toolkit</code>"
+    },
+    {
+      "k": {
+        "en": "Licence",
+        "fr": "Licence",
+        "zh": "授權"
+      },
+      "v": {
+        "en": "Free &amp; open source",
+        "fr": "Gratuit et open source",
+        "zh": "免費開源"
+      }
+    }
+  ],
+  "opener": {
+    "h": {
+      "en": "Plugins",
+      "fr": "Plugins",
+      "zh": "外掛"
+    },
+    "p": {
+      "en": "One plugin, for now.",
+      "fr": "Un seul plugin, pour l'instant.",
+      "zh": "目前只有一個外掛。"
+    }
+  },
+  "features": [
+    {
+      "h": "/audit-report",
+      "p": [
+        {
+          "en": "Generate exhaustive audit dossiers on any company, product, technology, or market — like a strategy consulting firm.",
+          "fr": "Générez des dossiers d'audit exhaustifs sur n'importe quelle entreprise, produit, technologie ou marché — comme un cabinet de conseil en stratégie.",
+          "zh": "針對任何公司、產品、技術或市場，產出詳盡的稽核檔案——就像一家策略顧問公司。"
+        },
+        "<code>--depth quick|full</code> · <code>--lang en|fr</code> · <code>--mode parallel|sequential|solo</code> · <code>--swot</code> · <code>--esg</code> · <code>--rh</code> · <code>--brief</code> · <code>--watch</code> · <code>--app-mode</code>",
+        {
+          "en": "<a href=\"https://vincentlauriat.github.io/AuditViewer/\">audit-report homepage</a>",
+          "fr": "<a href=\"https://vincentlauriat.github.io/AuditViewer/\">Page d'accueil d'audit-report</a>",
+          "zh": "<a href=\"https://vincentlauriat.github.io/AuditViewer/\">audit-report 首頁</a>"
+        }
+      ]
+    }
+  ],
+  "chapters": [
+    {
+      "id": "examples",
+      "h": {
+        "en": "audit-report — examples",
+        "fr": "audit-report — exemples",
+        "zh": "audit-report — 範例"
+      },
+      "blocks": [
+        {
+          "type": "pre",
+          "code": "> /audit-report Apple\n> /audit-report \"marché des LLM\" --lang fr\n> /audit-report OpenAI --depth full --swot --esg\n> /audit-report Notion --depth quick --brief\n\n# output\naudit-openai/\n  00_RESUME_EXECUTIF.md   01_HISTORIQUE.md\n  02_MARCHE.md            03_TECHNIQUE.md\n  04_TARIFICATION.md      05_CONCURRENCE.md\n  06_FINANCIER.md         07_FUTUR.md\n  08_ESG.md               09_SWOT.md\n  RAPPORT_COMPLET.md      _factcheck.md\n  _data.json  _sources.json  _manifest.json"
+        }
+      ]
+    },
+    {
+      "id": "inside",
+      "h": {
+        "en": "What an audit contains",
+        "fr": "Ce que contient un audit",
+        "zh": "一份稽核包含什麼"
+      },
+      "p": {
+        "en": "Up to 10 Markdown sections, plus machine-readable artifacts.",
+        "fr": "Jusqu'à 10 sections Markdown, plus des artefacts lisibles par machine.",
+        "zh": "最多 10 個 Markdown 章節，外加機器可讀的產出物。"
+      },
+      "blocks": [
+        {
+          "type": "p",
+          "t": {
+            "en": "Each run produces a structured <code>audit-{subject}/</code> folder. The optional dimensions (ESG, SWOT, HR) are only generated when you ask for them.",
+            "fr": "Chaque exécution produit un dossier structuré <code>audit-{subject}/</code>. Les dimensions optionnelles (ESG, SWOT, RH) ne sont générées que si vous les demandez.",
+            "zh": "每次執行都會產生一個結構化的 <code>audit-{subject}/</code> 資料夾。選用面向（ESG、SWOT、人資）只有在你要求時才會產生。"
+          }
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "en": "History",
+              "fr": "Historique",
+              "zh": "歷史"
+            },
+            {
+              "en": "Market",
+              "fr": "Marché",
+              "zh": "市場"
+            },
+            {
+              "en": "Technical",
+              "fr": "Technique",
+              "zh": "技術"
+            },
+            {
+              "en": "Pricing",
+              "fr": "Tarification",
+              "zh": "定價"
+            },
+            {
+              "en": "Competition",
+              "fr": "Concurrence",
+              "zh": "競爭"
+            },
+            {
+              "en": "Financials",
+              "fr": "Finances",
+              "zh": "財務"
+            },
+            {
+              "en": "Future outlook",
+              "fr": "Perspectives",
+              "zh": "未來展望"
+            },
+            "ESG",
+            "SWOT",
+            {
+              "en": "HR",
+              "fr": "RH",
+              "zh": "人資"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "t": {
+            "en": "Alongside the Markdown: <code>_data.json</code> · <code>_sources.json</code> · <code>_manifest.json</code> — so the dossier stays machine-readable.",
+            "fr": "À côté du Markdown : <code>_data.json</code> · <code>_sources.json</code> · <code>_manifest.json</code> — pour que le dossier reste lisible par machine.",
+            "zh": "Markdown 之外還有：<code>_data.json</code> · <code>_sources.json</code> · <code>_manifest.json</code>——讓檔案保持機器可讀。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "install",
+      "h": {
+        "en": "Install",
+        "fr": "Installer",
+        "zh": "安裝"
+      },
+      "p": {
+        "en": "Two commands inside Claude Code.",
+        "fr": "Deux commandes dans Claude Code.",
+        "zh": "在 Claude Code 中執行兩道指令。"
+      },
+      "blocks": [
+        {
+          "type": "pre",
+          "code": "# 1. add the marketplace\n> /plugin marketplace add vincentlauriat/toolkit\n\n# 2. install the plugin — or browse them all with /plugin\n> /plugin install audit-report@vincentlauriat-toolkit"
+        }
+      ]
+    }
+  ],
+  "close": {
+    "h": {
+      "en": "Free &amp; open source · Claude Code plugin marketplace",
+      "fr": "Gratuit et open source · marketplace de plugins Claude Code",
+      "zh": "免費開源 · Claude Code 外掛市集"
+    },
+    "actions": [
+      {
+        "primary": true,
+        "href": "https://github.com/vincentlauriat/toolkit",
+        "label": {
+          "en": "View on GitHub",
+          "fr": "Voir sur GitHub",
+          "zh": "在 GitHub 上檢視"
+        }
+      },
+      {
+        "href": "https://vincentlauriat.github.io/",
+        "label": {
+          "en": "More apps",
+          "fr": "Plus d'apps",
+          "zh": "更多應用程式"
+        }
+      }
+    ]
+  }
+}

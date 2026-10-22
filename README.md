@@ -33,11 +33,11 @@ Produces a structured `audit-{subject}/` folder with up to 10 Markdown sections 
 
 ### `app-specs`
 
-Frame a new app before coding: a short interview (five rounds, multiple-choice where possible), then six consistent documents written at the project root.
+Frame an app before coding: a short interview (four rounds, multiple-choice where possible), then six consistent documents written in `docs/specs/`. It also works on an existing codebase (documents what the code does) and can update existing specs in place.
 
 ```shell
 /app-specs
 /app-specs "an app that suggests recipes from what's left in the fridge"
 ```
 
-Produces `PRD.md`, `TRD.md`, `AppFlow.md`, `DesignBrief.md`, `BackendSchema.md` and `ImplementationPlan.md`. Unknown answers become flagged assumptions collected in the PRD's open questions; a traceability table links every priority feature to its screens, entities and tasks, and is checked before the skill reports done.
+Produces `PRD.md`, `TRD.md`, `AppFlow.md`, `DesignBrief.md`, `BackendSchema.md` and `ImplementationPlan.md`. Unknown answers become flagged assumptions collected in the PRD's open questions; a traceability table links every priority feature to its screens, entities and tasks, and is checked before the skill reports done by a shipped script (`check.py`, with a self-test that proves it catches failures).

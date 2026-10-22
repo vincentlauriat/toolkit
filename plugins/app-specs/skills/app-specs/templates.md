@@ -16,7 +16,9 @@ Goal: define what the product must do and how success is measured.
 - **Out of scope for v1** — what waits, and why.
 - **User stories** — "As a {{user}}, I want {{action}}, so that {{outcome}}." At least one per P0 and P1 feature.
 - **Acceptance criteria** — "Given {{starting situation}}, when {{action}}, then {{visible result}}." At least one per user story.
+- **Risks and dependencies** — table: risk | likelihood (low/med/high) | impact | mitigation or fallback. Cover product risks (adoption), technical risks (external API, data quality) and dependencies (third parties, people, deadlines).
 - **Open questions** — numbered decisions the product owner must still make, each with a recommendation. Includes every assumption flagged in the other documents.
+- **Revision log** — table: date | change | documents touched. First row: initial version. Update mode appends a row per revision.
 
 ---
 
@@ -29,9 +31,11 @@ Goal: make technical choices explicit so the build does not rest on guesses.
 - **Backend and database** — services, data storage, region.
 - **Authentication and roles** — sign-in methods, permissions.
 - **External services and APIs** — table: provider | usage | limits/quotas | who owns the credentials.
-- **Architecture** — main components and how data flows (a Mermaid diagram is welcome).
+- **Architecture** — main components and how data flows (a Mermaid diagram is welcome; `check.py` validates its syntax statically).
 - **Security and privacy** — sensitive data, access controls, retention period.
 - **Performance and reliability targets** — response times (ms), availability, backups.
+- **Testing strategy** — levels (unit, integration, end-to-end, manual), tools, what is deliberately not tested, the checks that gate a release (CI).
+- **Run cost** — table: item (hosting, database, each external API) | unit price or quota | expected monthly cost at the audience's scale. Order of magnitude, basis stated, flagged as a hypothesis; one line for a local tool.
 - **Environments and release** — development, staging, production, CI/CD.
 - **Key technical decisions and trade-offs** — table: choice | reason | alternative considered.
 
@@ -96,7 +100,9 @@ Goal: give the AI agent a build order with checkpoints.
 - **Step 5, quality** — error handling, accessibility, security, performance.
 - **Step 6, go-live** — test plan, deployment, rollback, monitoring.
 
-For each task, a table row: task | owner or agent | inputs | deliverable | done criterion | depends on.
+Under each step heading, give an **estimated effort** (order of magnitude in days or sessions, flagged as a hypothesis). For each task, a table row: task | owner or agent | inputs | deliverable | done criterion | depends on.
+
+In existing-project mode, steps cover only the gap between the code and the PRD; shipped features appear in the traceability table with `existant : path` in Tasks.
 
 **Traceability** (required, at the end) — one row per P0 and P1 feature, names copied verbatim from the PRD:
 

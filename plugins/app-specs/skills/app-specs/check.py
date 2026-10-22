@@ -23,6 +23,11 @@ MERMAID_START = re.compile(
     r"journey|gantt|pie|mindmap|timeline|C4Context|quadrantChart|gitGraph)\b")
 
 
+def plain(cell):
+    """Strip markdown emphasis and code ticks so '**Name**' matches 'Name'."""
+    return re.sub(r"[*_`]+", "", cell).strip()
+
+
 def tables(text):
     """Yield each markdown table as a list of rows (list of stripped cells), separator row removed."""
     block = []
@@ -30,7 +35,7 @@ def tables(text):
         if line.lstrip().startswith("|"):
             block.append(line.strip())
         elif block:
-            rows = [[c.strip() for c in r.strip("|").split("|")] for r in block]
+            rows = [[plain(c) for c in r.strip("|").split("|")] for r in block]
             yield [r for r in rows if not all(re.fullmatch(r":?-{2,}:?", c) for c in r)]
             block = []
 
@@ -123,6 +128,9 @@ def mermaid_errors(name, text):
         body = m.group(1).strip()
         if not MERMAID_START.match(body):
             errs.append(f"{name}: mermaid block does not start with a known diagram type")
+        if body.startswith("erDiagram"):
+            continue  # cardinality operators (||--o{) are legitimately unbalanced
+        body = re.sub(r'"[^"]*"', "", body)  # ignore quoted labels
         for a, b in ("()", "[]", "{}"):
             if body.count(a) != body.count(b):
                 errs.append(f"{name}: mermaid block has unbalanced '{a}{b}'")

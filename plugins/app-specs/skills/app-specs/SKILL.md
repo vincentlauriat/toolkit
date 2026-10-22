@@ -108,9 +108,9 @@ python3 -I <skill-dir>/check.py <output-folder>
 `<skill-dir>` is the directory holding this file. The checker verifies:
 - the 6 files exist and are non-empty;
 - no `{{` remains;
-- the **Traceability** table has one row per P0/P1 feature of the PRD, with non-empty Screens and Tasks cells, and every screen/entity named there exists in AppFlow / BackendSchema (exact whole-item match);
+- the **Traceability** table has one row per P0/P1 feature of the PRD, with non-empty Screens and Tasks cells, and every screen/entity named there exists in AppFlow / BackendSchema (exact whole-item match, ignoring markdown emphasis such as `**bold**`);
 - every entity (`- **Name** —` lines of BackendSchema's Entities section) is named in the authorization section;
-- Mermaid blocks start with a known diagram type and have balanced brackets. This is a static check only: if `mmdc` is installed, also render each block.
+- Mermaid blocks start with a known diagram type and have balanced brackets (not checked inside `erDiagram`, whose cardinality operators are legitimately unbalanced). This is a static check only: if `mmdc` is installed, also render each block.
 
 `--self-test` first needs a passing baseline (if the documents fail, fix them and rerun). It then mutates copies of the real documents (placeholder inserted, empty file, traceability row removed) and all three mutations must be caught.
 

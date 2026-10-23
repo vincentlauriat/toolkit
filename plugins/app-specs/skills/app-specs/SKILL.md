@@ -1,28 +1,29 @@
 ---
 name: app-specs
-description: Use when the user wants to frame, specify or kick off an app or product — a new idea, an existing codebase to document, or existing specs to update. Asks for a PRD, TRD, app flow, UI/UX design brief, backend schema or implementation plan, says "cadrer une app", "cahier des charges", "specs", "mettre à jour les specs", "/app-specs", or starts an empty project with only an idea.
+description: Use when the user wants to frame, specify or kick off an app or product — a new idea, an existing codebase to document, or existing specs to update. Asks for a PRD, TRD, user flows, UI/UX design brief, data model or implementation plan, says "cadrer une app", "cahier des charges", "specs", "mettre à jour les specs", "/app-specs", or starts an empty project with only an idea.
 ---
 
-# App specs — interview then 6 framing documents
+# App specs — interview, then an overview and 6 framing documents
 
 ## Overview
 
-Turn an app idea into six consistent framing documents by **interviewing the user first**, in short rounds, then writing everything at once. Never leave a placeholder: every field is either answered by the user, or filled with an explicit, flagged assumption.
+Turn an app idea into an overview plus six consistent framing documents by **interviewing the user first**, in short rounds, then writing everything at once. Never leave a placeholder: every field is either answered by the user, or filled with an explicit, flagged assumption.
 
 | # | File | Purpose |
 |---|---|---|
-| 1 | `PRD.md` | What the product does, how success is measured, what could go wrong |
-| 2 | `TRD.md` | Explicit technical choices, tests, run cost |
-| 3 | `AppFlow.md` | Every screen, path and state |
-| 4 | `DesignBrief.md` | Visual direction and UX rules |
-| 5 | `BackendSchema.md` | Data, relations, access rules |
-| 6 | `ImplementationPlan.md` | Build order, effort, checkpoints, traceability table |
+| 0 | `00-overview.md` | One-page presentation of the project and map of the other documents (written last) |
+| 1 | `01-prd.md` | What the product does, how success is measured, what could go wrong |
+| 2 | `02-trd.md` | Explicit technical choices, tests, run cost |
+| 3 | `03-user-flows.md` | Every screen, path and state |
+| 4 | `04-design-brief.md` | Visual direction and UX rules |
+| 5 | `05-data-model.md` | Data, relations, access rules |
+| 6 | `06-implementation-plan.md` | Build order, effort, checkpoints, traceability table |
 
 Section structure for each file: `templates.md` in this directory. Read it before writing. In it, `{{...}}` marks a placeholder to replace — never copy `{{` into a document. Checker: `check.py` in this directory.
 
 **Language.** Everything the skill says or asks is in the user's language. The option labels below are written in French: translate them when the user speaks another language.
 
-**Output folder: `docs/specs/`** (create it). Exception: if the 6 files already exist at the project root, keep them there.
+**Output folder: `docs/specs/`** (create it). Exception: if the numbered files already exist at the project root, keep them there.
 
 ## Step 0 — Pick the mode
 
@@ -30,7 +31,7 @@ Look at the working directory and the invocation args before asking anything.
 
 | Situation | Mode |
 |---|---|
-| The 6 files exist (`docs/specs/` or root) | **Update** |
+| The numbered files `01-` to `06-` exist (`docs/specs/` or root) | **Update** |
 | Source code exists (`package.json`, `Package.swift`, `*.xcodeproj`, `pyproject.toml`, `src/`…) and no specs | Ask once via `AskUserQuestion`: *Documenter l'existant* / *Cadrer une évolution ou une refonte* / *Repartir de zéro*. First choice → **Existing project** |
 | Empty folder, or "repartir de zéro" | **New app** (the default flow below) |
 
@@ -71,9 +72,9 @@ Document what is there instead of imagining it.
 
 Specs exist; do not re-run the interview.
 
-1. Read all six files. Ask once via `AskUserQuestion` (multiSelect): *Ajouter/modifier une fonctionnalité* / *Changement technique* / *Resynchroniser avec le code* / *Autre*, then one plain-chat question on the details.
+1. Read all seven files. Ask once via `AskUserQuestion` (multiSelect): *Ajouter/modifier une fonctionnalité* / *Changement technique* / *Resynchroniser avec le code* / *Autre*, then one plain-chat question on the details.
 2. Run the *Confirmation* step on the **delta only**: what changes, what ripples into other documents, new contradictions.
-3. Edit **in place**, never regenerate a file: the user may have hand-edited it. Propagate in dependency order (PRD → … → ImplementationPlan) and keep names verbatim. A removed feature loses its traceability row; an added one gets one.
+3. Edit **in place**, never regenerate a file: the user may have hand-edited it. Propagate in dependency order (PRD → … → ImplementationPlan), then refresh `00-overview.md` last, and keep names verbatim. A removed feature loses its traceability row; an added one gets one.
 4. Append a line to the PRD's **Revision log** (date, change, documents touched).
 5. Run the checker, then report what changed per file.
 
@@ -89,7 +90,7 @@ Then ask "Je génère ?" via `AskUserQuestion` (Générer / Corriger quelque cho
 
 ## Writing
 
-1. Write in dependency order: PRD → TRD → AppFlow → DesignBrief → BackendSchema → ImplementationPlan. Reuse PRD feature names, entity names and screen names verbatim in every later doc.
+1. Write in dependency order: PRD → TRD → UserFlows → DesignBrief → DataModel → ImplementationPlan, then **`00-overview.md` last** (numbered 0 because it is read first, written last: it only summarises the other six and adds no new fact). Reuse PRD feature names, entity names and screen names verbatim in every later doc.
 2. Flag your own choices with `*(hypothèse)*` (`*(assumption)*` in English docs): per value when the user answered the rest of the section; once at the section heading when the whole section is yours (e.g. a DesignBrief when the user gave no reference or brand).
 3. PRD **Open questions**: numbered, each with your recommendation; include every assumption that changes scope, cost, architecture or data handling, plus the resolved contradictions. Cosmetic values (hex codes, px sizes) stay flagged in place only.
 4. Scale to the audience: a solo/local tool gets no roles, no staging, no multi-region, a one-line cost estimate. When a template section doesn't apply (e.g. authorization without accounts), write one line saying why instead of a mechanical table.
@@ -106,10 +107,11 @@ python3 -I <skill-dir>/check.py <output-folder>
 ```
 
 `<skill-dir>` is the directory holding this file. The checker verifies:
-- the 6 files exist and are non-empty;
+- the 7 files exist and are non-empty;
+- `00-overview.md` links each of the six other documents by file name;
 - no `{{` remains;
-- the **Traceability** table has one row per P0/P1 feature of the PRD, with non-empty Screens and Tasks cells, and every screen/entity named there exists in AppFlow / BackendSchema (exact whole-item match, ignoring markdown emphasis such as `**bold**`);
-- every entity (`- **Name** —` lines of BackendSchema's Entities section) is named in the authorization section;
+- the **Traceability** table has one row per P0/P1 feature of the PRD, with non-empty Screens and Tasks cells, and every screen/entity named there exists in UserFlows / DataModel (exact whole-item match, ignoring markdown emphasis such as `**bold**`);
+- every entity (`- **Name** —` lines of DataModel's Entities section) is named in the authorization section;
 - Mermaid blocks start with a known diagram type and have balanced brackets (not checked inside `erDiagram`, whose cardinality operators are legitimately unbalanced). This is a static check only: if `mmdc` is installed, also render each block.
 
 `--self-test` first needs a passing baseline (if the documents fail, fix them and rerun). It then mutates copies of the real documents (placeholder inserted, empty file, traceability row removed) and all three mutations must be caught.

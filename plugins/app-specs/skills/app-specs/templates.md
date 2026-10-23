@@ -4,7 +4,21 @@ Section headings for each file. `{{...}}` marks a placeholder to replace — nev
 
 ---
 
-## 1. PRD.md — Product Requirements Document
+## 0. 00-overview.md — Project overview
+
+Goal: let a newcomer understand the project in two minutes and know where to read next. Written **last**; it summarises the other documents and introduces no new fact. Maximum one page.
+
+- **Name and pitch** — product name, one sentence on what it does and for whom.
+- **Problem and goal** — the pain point and the measurable success signal, copied from the PRD.
+- **Status** — new, shipped (version, date) or in progress; one line.
+- **Key choices** — platform, stack, hosting, data and access model, in 4–6 bullets taken from the TRD and the data model.
+- **Document map** — table: file | what you will find | read it when. One row per document `01-` to `06-`, each file name written exactly as on disk (the checker looks for them).
+- **Top open questions** — the 3–5 most important from the PRD, with the recommended answer.
+- **Next step** — step 1 of the implementation plan.
+
+---
+
+## 1. 01-prd.md — Product Requirements Document
 
 Goal: define what the product must do and how success is measured.
 
@@ -22,7 +36,7 @@ Goal: define what the product must do and how success is measured.
 
 ---
 
-## 2. TRD.md — Technical Requirements Document
+## 2. 02-trd.md — Technical Requirements Document
 
 Goal: make technical choices explicit so the build does not rest on guesses.
 
@@ -41,7 +55,7 @@ Goal: make technical choices explicit so the build does not rest on guesses.
 
 ---
 
-## 3. AppFlow.md — App flow
+## 3. 03-user-flows.md — User flows
 
 Goal: show every screen, every user path, and what happens on each click.
 
@@ -56,7 +70,7 @@ Goal: show every screen, every user path, and what happens on each click.
 
 ---
 
-## 4. DesignBrief.md — UI/UX design brief
+## 4. 04-design-brief.md — UI/UX design brief
 
 Goal: give the app a coherent, easy-to-use visual direction.
 
@@ -66,14 +80,14 @@ Goal: give the app a coherent, easy-to-use visual direction.
 - **Typography** — font(s), heading and body sizes (px/pt), weights.
 - **Components** — buttons, forms, cards, navigation, alerts: variants and rules.
 - **Layout rules** — grid, spacing scale, responsive breakpoints.
-- **Per-screen notes** — key content and hierarchy for each screen listed in AppFlow.
+- **Per-screen notes** — key content and hierarchy for each screen listed in UserFlows.
 - **Accessibility** — contrast (WCAG AA minimum), keyboard navigation, labels, touch target size (≥44 px).
 - **Interaction states** — hover, focus, disabled, loading, error, success.
 - **Required assets** — logo, icons (set/library), illustrations, screenshots.
 
 ---
 
-## 5. BackendSchema.md — Backend schema
+## 5. 05-data-model.md — Data model
 
 Goal: define stored data, how it links, and who can access it.
 
@@ -89,7 +103,7 @@ Goal: define stored data, how it links, and who can access it.
 
 ---
 
-## 6. ImplementationPlan.md — Implementation plan
+## 6. 06-implementation-plan.md — Implementation plan
 
 Goal: give the AI agent a build order with checkpoints.
 
@@ -108,7 +122,7 @@ In existing-project mode, steps cover only the gap between the code and the PRD;
 
 Several screens, entities or tasks in one cell are separated by `, ` and written with their exact names.
 
-| Feature | Priority | Screens (AppFlow) | Entities (BackendSchema, or "—" if none stored) | Tasks |
+| Feature | Priority | Screens (UserFlows) | Entities (DataModel, or "—" if none stored) | Tasks |
 |---|---|---|---|---|
 
 End each step with a **checkpoint**: run the app, check the acceptance criteria covered by this step, record any unresolved issue before moving on.

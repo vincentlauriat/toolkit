@@ -1,10 +1,16 @@
 {
   "name": "app-specs",
   "version": "1.1.0",
-  "description": "Interview the user about an app idea, then write six consistent framing documents: PRD, TRD, app flow, UI/UX design brief, backend schema and implementation plan.",
+  "description": "Interview the user about an app idea, then write a project overview and six consistent framing documents: PRD, TRD, user flows, UI/UX design brief, data model and implementation plan.",
   "author": {
     "name": "Vincent Lauriat"
   },
   "homepage": "https://github.com/vincentlauriat/toolkit",
-  "keywords": ["prd", "specs", "product", "planning", "requirements"]
+  "keywords": [
+    "prd",
+    "specs",
+    "product",
+    "planning",
+    "requirements"
+  ]
 }

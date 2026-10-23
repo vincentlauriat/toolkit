@@ -4,7 +4,21 @@ Section headings for each file. `{{...}}` marks a placeholder to replace — nev
 
 ---
 
-## 1. PRD.md — Product Requirements Document
+## 0. 00-overview.md — Project overview
+
+Goal: let a newcomer understand the project in two minutes and know where to read next. Written **last**; it summarises the other documents and introduces no new fact. Maximum one page.
+
+- **Name and pitch** — product name, one sentence on what it does and for whom.
+- **Problem and goal** — the pain point and the measurable success signal, copied from the PRD.
+- **Status** — new, shipped (version, date) or in progress; one line.
+- **Key choices** — platform, stack, hosting, data and access model, in 4–6 bullets taken from the TRD and the data model.
+- **Document map** — table: file | what you will find | read it when. One row per document `01-` to `06-`, each file name written exactly as on disk (the checker looks for them).
+- **Top open questions** — the 3–5 most important from the PRD, with the recommended answer.
+- **Next step** — step 1 of the implementation plan.
+
+---
+
+## 1. 01-prd.md — Product Requirements Document
 
 Goal: define what the product must do and how success is measured.
 
@@ -16,11 +30,13 @@ Goal: define what the product must do and how success is measured.
 - **Out of scope for v1** — what waits, and why.
 - **User stories** — "As a {{user}}, I want {{action}}, so that {{outcome}}." At least one per P0 and P1 feature.
 - **Acceptance criteria** — "Given {{starting situation}}, when {{action}}, then {{visible result}}." At least one per user story.
+- **Risks and dependencies** — table: risk | likelihood (low/med/high) | impact | mitigation or fallback. Cover product risks (adoption), technical risks (external API, data quality) and dependencies (third parties, people, deadlines).
 - **Open questions** — numbered decisions the product owner must still make, each with a recommendation. Includes every assumption flagged in the other documents.
+- **Revision log** — table: date | change | documents touched. First row: initial version. Update mode appends a row per revision.
 
 ---
 
-## 2. TRD.md — Technical Requirements Document
+## 2. 02-trd.md — Technical Requirements Document
 
 Goal: make technical choices explicit so the build does not rest on guesses.
 
@@ -29,15 +45,17 @@ Goal: make technical choices explicit so the build does not rest on guesses.
 - **Backend and database** — services, data storage, region.
 - **Authentication and roles** — sign-in methods, permissions.
 - **External services and APIs** — table: provider | usage | limits/quotas | who owns the credentials.
-- **Architecture** — main components and how data flows (a Mermaid diagram is welcome).
+- **Architecture** — main components and how data flows (a Mermaid diagram is welcome; `check.py` validates its syntax statically).
 - **Security and privacy** — sensitive data, access controls, retention period.
 - **Performance and reliability targets** — response times (ms), availability, backups.
+- **Testing strategy** — levels (unit, integration, end-to-end, manual), tools, what is deliberately not tested, the checks that gate a release (CI).
+- **Run cost** — table: item (hosting, database, each external API) | unit price or quota | expected monthly cost at the audience's scale. Order of magnitude, basis stated, flagged as a hypothesis; one line for a local tool.
 - **Environments and release** — development, staging, production, CI/CD.
 - **Key technical decisions and trade-offs** — table: choice | reason | alternative considered.
 
 ---
 
-## 3. AppFlow.md — App flow
+## 3. 03-user-flows.md — User flows
 
 Goal: show every screen, every user path, and what happens on each click.
 
@@ -52,7 +70,7 @@ Goal: show every screen, every user path, and what happens on each click.
 
 ---
 
-## 4. DesignBrief.md — UI/UX design brief
+## 4. 04-design-brief.md — UI/UX design brief
 
 Goal: give the app a coherent, easy-to-use visual direction.
 
@@ -62,14 +80,14 @@ Goal: give the app a coherent, easy-to-use visual direction.
 - **Typography** — font(s), heading and body sizes (px/pt), weights.
 - **Components** — buttons, forms, cards, navigation, alerts: variants and rules.
 - **Layout rules** — grid, spacing scale, responsive breakpoints.
-- **Per-screen notes** — key content and hierarchy for each screen listed in AppFlow.
+- **Per-screen notes** — key content and hierarchy for each screen listed in UserFlows.
 - **Accessibility** — contrast (WCAG AA minimum), keyboard navigation, labels, touch target size (≥44 px).
 - **Interaction states** — hover, focus, disabled, loading, error, success.
 - **Required assets** — logo, icons (set/library), illustrations, screenshots.
 
 ---
 
-## 5. BackendSchema.md — Backend schema
+## 5. 05-data-model.md — Data model
 
 Goal: define stored data, how it links, and who can access it.
 
@@ -85,7 +103,7 @@ Goal: define stored data, how it links, and who can access it.
 
 ---
 
-## 6. ImplementationPlan.md — Implementation plan
+## 6. 06-implementation-plan.md — Implementation plan
 
 Goal: give the AI agent a build order with checkpoints.
 
@@ -96,13 +114,15 @@ Goal: give the AI agent a build order with checkpoints.
 - **Step 5, quality** — error handling, accessibility, security, performance.
 - **Step 6, go-live** — test plan, deployment, rollback, monitoring.
 
-For each task, a table row: task | owner or agent | inputs | deliverable | done criterion | depends on.
+Under each step heading, give an **estimated effort** (order of magnitude in days or sessions, flagged as a hypothesis). For each task, a table row: task | owner or agent | inputs | deliverable | done criterion | depends on.
+
+In existing-project mode, steps cover only the gap between the code and the PRD; shipped features appear in the traceability table with `existant : path` in Tasks.
 
 **Traceability** (required, at the end) — one row per P0 and P1 feature, names copied verbatim from the PRD:
 
 Several screens, entities or tasks in one cell are separated by `, ` and written with their exact names.
 
-| Feature | Priority | Screens (AppFlow) | Entities (BackendSchema, or "—" if none stored) | Tasks |
+| Feature | Priority | Screens (UserFlows) | Entities (DataModel, or "—" if none stored) | Tasks |
 |---|---|---|---|---|
 
 End each step with a **checkpoint**: run the app, check the acceptance criteria covered by this step, record any unresolved issue before moving on.

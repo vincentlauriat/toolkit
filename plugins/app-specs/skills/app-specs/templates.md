@@ -26,7 +26,7 @@ Goal: define what the product must do and how success is measured.
 - **Target users** — who they are, what they need (1–3 personas max).
 - **Problem and current solution** — the pain point and what users do today.
 - **Goal and success metric** — the intended outcome and one measurable signal (number + timeframe).
-- **Main features** — table: feature | user benefit | priority (P0/P1/P2).
+- **Main features** — table: feature | user benefit | priority (P0/P1/P2). Existing project: feature | user benefit | status | priority. The priority is always the **last** cell; the feature cell holds the bare name only.
 - **Out of scope for v1** — what waits, and why.
 - **User stories** — "As a {{user}}, I want {{action}}, so that {{outcome}}." At least one per P0 and P1 feature.
 - **Acceptance criteria** — "Given {{starting situation}}, when {{action}}, then {{visible result}}." At least one per user story.
@@ -42,7 +42,7 @@ Goal: make technical choices explicit so the build does not rest on guesses.
 
 - **Platforms** — web, iOS, Android, macOS, other; minimum OS/browser versions.
 - **Frontend and hosting** — framework, runtime, deployment target.
-- **Backend and database** — services, data storage, region.
+- **Backend and database** — services, data storage, region. For an API, CLI or MCP server: a table endpoint or tool | parameters and limits | auth.
 - **Authentication and roles** — sign-in methods, permissions.
 - **External services and APIs** — table: provider | usage | limits/quotas | who owns the credentials.
 - **Architecture** — main components and how data flows (a Mermaid diagram is welcome; `check.py` validates its syntax statically).
@@ -60,7 +60,7 @@ Goal: make technical choices explicit so the build does not rest on guesses.
 Goal: show every screen, every user path, and what happens on each click.
 
 - **Entry points** — how the user arrives (URL, install, deep link, notification…).
-- **Screen list** — table: screen | purpose | data needed.
+- **Screen list** — table: screen | purpose | data needed. The first header cell must be *Screen* (translated): the checker reads screen names from this table only. Surfaces without UI that a feature relies on (job log, API client, MCP client) go here too, purpose starting "non-visual".
 - **Main path** — `{{start screen}} -> {{action}} -> {{next screen}} -> {{success state}}`.
 - **Alternative paths** — cancel, edit, go back, skip.
 - **Action details** — for each action: trigger, validation, loading state, success state, error state, next screen (a table per screen works well).
@@ -114,9 +114,11 @@ Goal: give the AI agent a build order with checkpoints.
 - **Step 5, quality** — error handling, accessibility, security, performance.
 - **Step 6, go-live** — test plan, deployment, rollback, monitoring.
 
+Give each task an id (`E2.1` = step 2, task 1) so other rows can depend on it; in update mode, finished tasks stay, marked done.
+
 Under each step heading, give an **estimated effort** (order of magnitude in days or sessions, flagged as a hypothesis). For each task, a table row: task | owner or agent | inputs | deliverable | done criterion | depends on.
 
-In existing-project mode, steps cover only the gap between the code and the PRD; shipped features appear in the traceability table with `existant : path` in Tasks.
+In existing-project mode, steps cover only the gap between the code and the PRD; shipped features appear in the traceability table with the *existing* marker and the path in Tasks (`existant : path` in French docs, `existing: path` in English).
 
 **Traceability** (required, at the end) — one row per P0 and P1 feature, names copied verbatim from the PRD:
 

@@ -23,6 +23,20 @@ Section structure for each file: `templates.md` in this directory. Read it befor
 
 **Language.** Everything the skill says or asks is in the user's language. The option labels below are written in French: translate them when the user speaks another language.
 
+**Markers.** Use the form matching the documents' language (translate for other languages):
+
+| Meaning | French docs | English docs |
+|---|---|---|
+| Fact read in the code or an existing file | `*(constaté : path)*` | `*(observed: path)*` |
+| Your own choice | `*(hypothèse)*` | `*(assumption)*` |
+| Feature status (existing project) | livrée / prévue | shipped / planned |
+| Traceability Tasks of a shipped feature | `existant : path` | `existing: path` |
+| Feature you added yourself (confirmation and PRD) | « proposée » | "proposed" |
+
+Markers go in description, status or task cells — **never in a name cell** (feature, screen, entity): names must match exactly across documents.
+
+**No `AskUserQuestion`?** (subagent, other harness) Ask the same options as a numbered list in plain text and wait for the answer. Never answer on the user's behalf.
+
 **Output folder: `docs/specs/`** (create it). Exception: if the numbered files already exist at the project root, keep them there.
 
 ## Step 0 — Pick the mode
@@ -63,10 +77,11 @@ Ask in the user's language. Use `AskUserQuestion` for choices (max 4 questions p
 Document what is there instead of imagining it.
 
 1. **Read the code first.** For anything beyond a small repo, delegate to an exploration subagent: stack and versions, entry points, screens/routes, data model, external services, auth, tests, CI, release process. Also read the README and any existing docs.
-2. **Derive rounds 1–4 from the code**, then ask only what the code cannot tell: the real goal and success metric, the audience, what is intentionally out of scope, planned features. Facts from the code are written `*(constaté : path/to/file)*`; anything inferred is `*(hypothèse)*`.
-3. **Priorities.** Shipped features are listed with status « livrée » and get P0 or P1 in the PRD table; planned features follow the normal P0–P2 rules.
-4. **ImplementationPlan becomes an evolution plan.** Steps cover only the gap between code and PRD (missing features, quality, release). Traceability rows for shipped features put `existant : path` in Tasks (non-empty, as the checker requires).
-5. Then continue at *Confirmation* below. Contradictions between the code and the user's intent are the most valuable thing to surface there.
+2. **Derive rounds 1–4 from the code**, then ask only what the code cannot tell: the real goal and success metric, the audience, what is intentionally out of scope, planned features. Facts from the code get the *observed* marker with the file path; anything inferred gets the *assumption* marker.
+3. **Priorities.** The PRD features table gets a status column **before** the priority: `feature | benefit | status | priority` — the priority stays the last cell (the checker reads it there). Shipped features get P0 or P1; planned features follow the normal P0–P2 rules.
+4. **Existing docs** (README, a root TRD.md or PLAN.md, ARCHITECTURE…) stay where they are: do not edit them. The specs are the framing set (what and why); say in the PRD Open questions which document is the reference for what, and list every contradiction between those docs and the code with the code's version as the default. Also flag links to documents that do not exist.
+5. **ImplementationPlan becomes an evolution plan.** Steps cover only the gap between code and PRD (missing features, quality, release); a step with no gap says so in one line instead of inventing tasks. Traceability rows for shipped features put the *existing* marker with the path in Tasks (non-empty, as the checker requires); a shipped feature with remaining work lists both: `existing: path, E2.1`.
+6. Then continue at *Confirmation* below. Contradictions between the code and the user's intent are the most valuable thing to surface there.
 
 ## Update mode
 
@@ -74,16 +89,22 @@ Specs exist; do not re-run the interview.
 
 1. Read all seven files. Ask once via `AskUserQuestion` (multiSelect): *Ajouter/modifier une fonctionnalité* / *Changement technique* / *Resynchroniser avec le code* / *Autre*, then one plain-chat question on the details.
 2. Run the *Confirmation* step on the **delta only**: what changes, what ripples into other documents, new contradictions.
-3. Edit **in place**, never regenerate a file: the user may have hand-edited it. Propagate in dependency order (PRD → … → ImplementationPlan), then refresh `00-overview.md` last, and keep names verbatim. A removed feature loses its traceability row; an added one gets one.
+   Re-run every Confirmation check on the delta, including: can the success metric still be measured, and does shipped code contradict the specs' intent (privacy, access, storage)? Document what the code does, and open a task or an open question for each gap.
+3. Edit **in place**, never regenerate a file: the user may have hand-edited it. Use exact, minimal replacements (if the folder is in git, `git diff` shows hand edits since the last commit). Propagate in dependency order (PRD → … → ImplementationPlan), then refresh `00-overview.md` last, and keep names verbatim. Re-check every *observed* fact the delta touches against the code.
+   - **Added feature** → new PRD row, story, criterion and traceability row. **Removed feature** → its PRD row moves to *Out of scope* (with the reason) and its traceability row goes; its story and criterion are struck through with the date, not deleted.
+   - **Planned → shipped** → status changes, *observed* path added, traceability Tasks becomes `existing: path` plus any remaining tasks.
+   - **Finished tasks** stay in the plan, marked done, so `depends on` references and checkpoints stay valid.
+   - **Numbers are stable**: user stories, acceptance criteria and open questions are cited elsewhere — never renumber; append new ones at the end.
+   - Refresh any "documented on <date>" line.
 4. Append a line to the PRD's **Revision log** (date, change, documents touched).
-5. Run the checker, then report what changed per file.
+5. Run the verification below, then report what changed per file, plus the top open questions and the next step. "Shipped" means the code is present; say whether its tests were run.
 
 ## Confirmation (before writing anything)
 
 Present, in ≤25 lines:
 1. **Summary** — name, problem, users, platform, stack, docs language, output folder.
 2. **Features with priorities** — P0 = v1 must-have, P1 = v1 if time, P2 = later. If the user gave none, derive them from order and wording. Mark features you added yourself as « proposée » so the user sees them before accepting.
-3. **Contradictions found, each with your proposed resolution** — e.g. "local-only data + external LLM → API key needs a small server proxy". Also check that the success metric can actually be measured by some feature; if not, propose the missing feature.
+3. **Contradictions found, each with your proposed resolution** — e.g. "local-only data + external LLM → API key needs a small server proxy". Also check that the success metric can actually be measured by some feature; if not, propose the missing feature. Check privacy too: a feature that stores user identifiers (analytics, audit log) against a "no personal data" statement or a compliance constraint.
 4. **Main assumptions** you will make.
 
 Then ask "Je génère ?" via `AskUserQuestion` (Générer / Corriger quelque chose).
@@ -95,28 +116,32 @@ Then ask "Je génère ?" via `AskUserQuestion` (Générer / Corriger quelque cho
 3. PRD **Open questions**: numbered, each with your recommendation; include every assumption that changes scope, cost, architecture or data handling, plus the resolved contradictions. Cosmetic values (hex codes, px sizes) stay flagged in place only.
 4. Scale to the audience: a solo/local tool gets no roles, no staging, no multi-region, a one-line cost estimate. When a template section doesn't apply (e.g. authorization without accounts), write one line saying why instead of a mechanical table.
 5. Estimates (run cost, build effort) are orders of magnitude with their basis, never false precision; flag them as hypotheses.
-6. Follow the project's own conventions if it has any (tracking files like CHANGES.md/TODOS.md, .gitignore rules).
+6. Follow the project's own conventions if it has any (tracking files like CHANGES.md/TODOS.md, .gitignore rules): add one line there saying the specs were written or updated — do not rewrite those files.
+7. **Never copy into the specs** secrets, tokens, connection strings, tenant/app GUIDs, internal hostnames or personal data, even when the code or existing docs contain them. Name a setting by its variable name only (`DATABASE_URL`, not its value).
+8. A feature with no screen of its own (nightly job, API, CLI, MCP server) still needs a Screens cell: list its surface in the UserFlows screen table with a purpose starting "non-visual" (e.g. *Sync log*, *Claude client*), and name that surface in the traceability row. Document an API, CLI or MCP surface in the TRD as a table: endpoint or tool | parameters and limits | auth.
 
 ## Verification (before announcing done)
 
 Run the shipped checker — do not rewrite it, do not use grep:
 
 ```bash
-python3 -I <skill-dir>/check.py <output-folder> --self-test
 python3 -I <skill-dir>/check.py <output-folder>
+python3 -I <skill-dir>/check.py <output-folder> --self-test
 ```
 
 `<skill-dir>` is the directory holding this file. The checker verifies:
 - the 7 files exist and are non-empty;
 - `00-overview.md` links each of the six other documents by file name;
 - no `{{` remains;
-- the **Traceability** table has one row per P0/P1 feature of the PRD, with non-empty Screens and Tasks cells, and every screen/entity named there exists in UserFlows / DataModel (exact whole-item match, ignoring markdown emphasis such as `**bold**`);
+- the **Traceability** table has one row per P0/P1 feature of the PRD, with the same priority as the PRD, non-empty Screens and Tasks cells, and every screen/entity named there exists in UserFlows / DataModel (exact whole-item match, ignoring markdown emphasis such as `**bold**` and code ticks; snake_case names are kept). Screens are the first-column cells of the UserFlows table(s) whose first header cell is *Screen* — a closed list: *Screen(s)*, *Écran(s)*, *Pantalla(s)*, *Tela(s)*, *Schermata/Schermi*, *Bildschirm(e)*, *Ansicht(en)*, *Surface(s)*, optionally followed by *list* or a parenthesis; each traceability row appears once;
 - every entity (`- **Name** —` lines of DataModel's Entities section) is named in the authorization section;
 - Mermaid blocks start with a known diagram type and have balanced brackets (not checked inside `erDiagram`, whose cardinality operators are legitimately unbalanced). This is a static check only: if `mmdc` is installed, also render each block.
 
-`--self-test` first needs a passing baseline (if the documents fail, fix them and rerun). It then mutates copies of the real documents (placeholder inserted, empty file, traceability row removed) and all three mutations must be caught.
+`--self-test` needs a passing baseline, so run it second. It then mutates copies of the real documents (placeholder inserted, empty file, overview link removed, traceability row removed, unknown screen in traceability); every mutation must be caught. Its last line reads `OK: self-test passed (n/n mutations caught)`.
 
-Fix gaps, then give the user: the file list, the top 3–5 open questions, and the suggested next step (step 1 of the implementation plan). Quote the checker's last line rather than just saying it passed.
+The checker proves structure, not truth: it does not verify that *observed* facts match the code. Re-read the cited files for the facts you wrote or changed.
+
+Fix gaps, then give the user: the file list, the top 3–5 open questions, and the suggested next step (step 1 of the implementation plan). Quote the last line of both commands rather than just saying they passed. Say whether Mermaid blocks were rendered (`mmdc`) or only checked statically.
 
 ## Common mistakes
 
@@ -131,3 +156,6 @@ Fix gaps, then give the user: the file list, the top 3–5 open questions, and t
 | Over-engineering a solo/local tool | Scale TRD and schema to the audience from round 2 |
 | Inventing a stack the code contradicts | Existing project mode: read the code first, cite files |
 | Regenerating specs the user hand-edited | Update mode: edit in place, log the change |
+| Renumbering stories or open questions in an update | Append new ones; strike removed ones through |
+| Copying a GUID, hostname or secret from the code into the specs | Name the setting only |
+| Status or marker inside a feature/screen/entity name cell | Put it in its own cell; names stay bare |

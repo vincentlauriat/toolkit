@@ -1,2 +1,10 @@
 .DS_Store
 .omc/
+
+# Project tracking (local only)
+COMMANDS.md
+MEMORY.md
+CHANGES.md
+TODOS.md
+PLAN.md
+__pycache__/

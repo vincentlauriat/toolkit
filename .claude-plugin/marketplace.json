@@ -20,7 +20,7 @@
     },
     {
       "name": "app-specs",
-      "description": "Interview the user about an app idea, then write six consistent framing documents: PRD, TRD, app flow, UI/UX design brief, backend schema and implementation plan.",
+      "description": "Interview the user about an app idea, then write a project overview and six consistent framing documents: PRD, TRD, user flows, UI/UX design brief, data model and implementation plan. Also documents an existing codebase and updates existing specs in place.",
       "source": "./plugins/app-specs"
     }
   ]

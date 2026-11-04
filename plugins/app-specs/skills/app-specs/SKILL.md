@@ -29,7 +29,7 @@ Section structure for each file: `templates.md` in this directory. Read it befor
 |---|---|---|
 | Fact read in the code or an existing file | `*(constaté : path)*` | `*(observed: path)*` |
 | Your own choice | `*(hypothèse)*` | `*(assumption)*` |
-| Feature status (existing project) | livrée / prévue | shipped / planned |
+| Feature status (existing project) | livrée / prévue (évolution : livrée, retravaillée) | shipped / planned (evolution: shipped, reworked) |
 | Traceability Tasks of a shipped feature | `existant : path` | `existing: path` |
 | Feature you added yourself (confirmation and PRD) | « proposée » | "proposed" |
 
@@ -46,10 +46,12 @@ Look at the working directory and the invocation args before asking anything.
 | Situation | Mode |
 |---|---|
 | The numbered files `01-` to `06-` exist (`docs/specs/` or root) | **Update** |
-| Source code exists (`package.json`, `Package.swift`, `*.xcodeproj`, `pyproject.toml`, `src/`…) and no specs | Ask once via `AskUserQuestion`: *Documenter l'existant* / *Cadrer une évolution ou une refonte* / *Repartir de zéro*. First choice → **Existing project** |
+| Source code exists (`package.json`, `Package.swift`, `*.xcodeproj`, `pyproject.toml`, `src/`…) and no specs | Ask once via `AskUserQuestion`: *Documenter l'existant* / *Cadrer une évolution ou une refonte* / *Repartir de zéro*. First → **Existing project**; second → **Existing project** plus *Evolution or redesign*; third → **New app** |
 | Empty folder, or "repartir de zéro" | **New app** (the default flow below) |
 
 ## Interview (New app)
+
+Existing project and Evolution modes do not run these rounds as such: derive them from the code and ask only what it cannot tell (see below).
 
 Ask in the user's language. Use `AskUserQuestion` for choices (max 4 questions per call, recommended option first with "(Recommandé)"), plain chat for open answers.
 
@@ -82,6 +84,18 @@ Document what is there instead of imagining it.
 4. **Existing docs** (README, a root TRD.md or PLAN.md, ARCHITECTURE…) stay where they are: do not edit them. The specs are the framing set (what and why); say in the PRD Open questions which document is the reference for what, and list every contradiction between those docs and the code with the code's version as the default. Also flag links to documents that do not exist.
 5. **ImplementationPlan becomes an evolution plan.** Steps cover only the gap between code and PRD (missing features, quality, release); a step with no gap says so in one line instead of inventing tasks. Traceability rows for shipped features put the *existing* marker with the path in Tasks (non-empty, as the checker requires); a shipped feature with remaining work lists both: `existing: path, E2.1`.
 6. Then continue at *Confirmation* below. Contradictions between the code and the user's intent are the most valuable thing to surface there.
+
+### Evolution or redesign
+
+Everything in *Existing project mode* applies (read the code first, *observed* markers, status column). The code is the starting point; the specs describe the **target**. In addition:
+
+1. **One extra plain-chat question**, after reading the code: what changes and why (new features, a reworked part, a new stack or data store), and what must keep working during the change. Skip it if the invocation or earlier answers already say so.
+2. **Feature status.** Kept as is → shipped. New → planned. Reworked → `shipped, reworked` (`livrée, retravaillée`); its benefit cell says what changes, and its traceability Tasks list both `existing: path` and the new tasks. Dropped → its row moves to *Out of scope*, with the reason.
+   A purely technical change (storage, framework, hosting) is **not a feature row**: it lives in the TRD (current → target) and in plan steps, and the user-visible features it touches are marked reworked. A one-shot migration command is a plan task, not a screen.
+3. **TRD and DataModel: current → target.** For each choice that changes (framework, hosting, data store, schema), write the current value with its *observed* path, then the target and why. Unchanged choices are written normally.
+4. **ImplementationPlan becomes a migration plan.** Rename the template steps to fit (e.g. safety net, new store, cut-over, cleanup). Order them so the app still works at every checkpoint. Name the cut-over step, and give a rollback for each irreversible step (data migration, provider switch); if the rollback needs tooling (an export command), that tooling is a task before the cut-over. A full rewrite lists which shipped features must work again before the old code is removed. Tasks may update existing docs (README) after the cut-over — the skill itself still does not edit them.
+5. **Confirmation** also lists what breaks or is lost during the change, and any data migration, within the same 25 lines.
+6. **Defects found in the code** (not contradictions with intent, e.g. ids reused after a delete): one line in the confirmation, a PRD risk, and a plan task when the evolution touches that code.
 
 ## Update mode
 
@@ -155,6 +169,7 @@ Fix gaps, then give the user: the file list, the top 3–5 open questions, and t
 | Feature names drifting between documents | Reuse PRD names verbatim; the traceability table exposes drift |
 | Over-engineering a solo/local tool | Scale TRD and schema to the audience from round 2 |
 | Inventing a stack the code contradicts | Existing project mode: read the code first, cite files |
+| Treating an evolution or redesign as a new app | Read the code first; the specs describe the target, the plan migrates to it |
 | Regenerating specs the user hand-edited | Update mode: edit in place, log the change |
 | Renumbering stories or open questions in an update | Append new ones; strike removed ones through |
 | Copying a GUID, hostname or secret from the code into the specs | Name the setting only |

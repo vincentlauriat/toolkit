@@ -391,6 +391,14 @@
         {
           "type": "pre",
           "code": "| Feature       | Benefit                   | Status  | Priority |\n|---------------|---------------------------|---------|----------|\n| Daily report  | See yesterday at a glance | shipped | P0       |\n| Export to CSV | Share with finance        | planned | P1       |\n\nDaily report runs at 06:00 UTC\n*(observed: src/jobs/report.ts)*"
+        },
+        {
+          "type": "p",
+          "t": {
+            "en": "Planning a change rather than documenting? Choose <b>Frame an evolution or a redesign</b>. The code stays the starting point and the specs describe the target: each feature is kept, new, reworked or dropped; the TRD and data model show current → target; the plan becomes a migration plan where the app works at every checkpoint, with a named cut-over and a rollback for each irreversible step.",
+            "fr": "Vous préparez un changement plutôt qu'une documentation ? Choisissez <b>Cadrer une évolution ou une refonte</b>. Le code reste le point de départ et les specs décrivent la cible : chaque fonctionnalité est gardée, nouvelle, retravaillée ou abandonnée ; le TRD et le modèle de données montrent l'actuel → la cible ; le plan devient un plan de migration où l'app fonctionne à chaque jalon, avec une bascule nommée et un retour arrière pour chaque étape irréversible.",
+            "zh": "要規劃變更而不只是記錄？選擇<b>框定演進或重構</b>。程式碼仍是起點，規格描述目標：每項功能標示為保留、新增、重做或移除；TRD 與資料模型呈現現況 → 目標；計畫變成遷移計畫，每個檢查點應用程式都能運作，並有明確的切換步驟與每個不可逆步驟的回復方式。"
+          }
         }
       ]
     },

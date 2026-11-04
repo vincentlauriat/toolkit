@@ -6,7 +6,7 @@
   "accent": "#c084fc",
   "meta": {
     "title": "toolkit — Claude Code plugins by Vincent Lauriat",
-    "description": "A personal collection of Claude Code plugins: audit-report generates exhaustive audit dossiers on any company, product, technology or market; app-specs frames an app before coding with a PRD, TRD, user flows, design brief, data model and implementation plan.",
+    "description": "A personal collection of Claude Code plugins: audit-report generates exhaustive audit dossiers on any company, product, technology or market; app-specs frames an app — new idea or existing codebase — with a PRD, TRD, user flows, design brief, data model and implementation plan.",
     "favicon": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0a0f'/%3E%3Cpath d='M14 22l10 10-10 10' fill='none' stroke='%23c084fc' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M32 42h18' stroke='%23c084fc' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E"
   },
   "role": {
@@ -106,14 +106,14 @@
       "h": "/app-specs",
       "p": [
         {
-          "en": "Frame an app before coding: a short interview (four rounds, multiple-choice where possible), then a one-page overview plus six consistent documents written in <code>docs/specs/</code>.",
-          "fr": "Cadrez une app avant de coder : un court entretien (quatre tours, à choix multiples quand c'est possible), puis une présentation d'une page et six documents cohérents écrits dans <code>docs/specs/</code>.",
-          "zh": "在寫程式之前先框定一個 App：一段簡短訪談（四輪，盡可能採用選擇題），接著在 <code>docs/specs/</code> 中產出一頁總覽與六份彼此一致的文件。"
+          "en": "Frame an app — a new idea (greenfield) or an existing codebase (brownfield): a one-page overview plus six consistent documents written in <code>docs/specs/</code>.",
+          "fr": "Cadrez une app — une idée neuve (greenfield) ou un code existant (brownfield) : une présentation d'une page et six documents cohérents écrits dans <code>docs/specs/</code>.",
+          "zh": "框定一個 App——全新構想或既有程式碼：在 <code>docs/specs/</code> 中產出一頁總覽與六份彼此一致的文件。"
         },
         {
-          "en": "It also works on an existing codebase (documents what the code does) and can update existing specs in place.",
-          "fr": "Il fonctionne aussi sur un code existant (il documente ce que fait le code) et peut mettre à jour des specs existantes sur place.",
-          "zh": "它也適用於既有程式碼（記錄程式碼實際的行為），並能就地更新既有的規格文件。"
+          "en": "Greenfield starts with a short interview (four rounds, multiple-choice where possible). Brownfield reads the code first, documents what is there with the file each fact comes from, and turns the plan into an evolution plan. Existing specs are updated in place.",
+          "fr": "Le greenfield commence par un court entretien (quatre tours, à choix multiples quand c'est possible). Le brownfield lit d'abord le code, documente ce qui existe en citant le fichier de chaque fait, et fait du plan un plan d'évolution. Les specs existantes sont mises à jour sur place.",
+          "zh": "全新專案從一段簡短訪談開始（四輪，盡可能採用選擇題）。既有專案則先讀程式碼，記錄現有內容並註明每項事實的來源檔案，並把計畫改為演進計畫。既有規格會就地更新。"
         },
         {
           "en": "<a href=\"https://vincentlauriat.github.io/toolkit/app-specs/\">app-specs homepage</a>",
@@ -226,7 +226,7 @@
       "blocks": [
         {
           "type": "pre",
-          "code": "> /app-specs\n> /app-specs \"an app that suggests recipes from what's left in the fridge\"\n\n# output\ndocs/specs/\n  00-overview.md          01-prd.md\n  02-trd.md               03-user-flows.md\n  04-design-brief.md      05-data-model.md\n  06-implementation-plan.md"
+          "code": "# greenfield — an empty folder\n> /app-specs \"an app that suggests recipes from what's left in the fridge\"\n\n# brownfield — inside an existing repo\n> /app-specs\n\n# output\ndocs/specs/\n  00-overview.md          01-prd.md\n  02-trd.md               03-user-flows.md\n  04-design-brief.md      05-data-model.md\n  06-implementation-plan.md"
         }
       ]
     },
@@ -293,9 +293,9 @@
                 "zh": "三種模式"
               },
               "p": {
-                "en": "New app (empty folder: interview, then the seven documents) · existing project (reads the code first and documents what is there) · update (edits existing specs in place and logs the revision).",
-                "fr": "Nouvelle app (dossier vide : entretien, puis les sept documents) · projet existant (lit d'abord le code et documente ce qui existe) · mise à jour (modifie les specs existantes sur place et consigne la révision).",
-                "zh": "新 App（空資料夾：先訪談，再產出七份文件）· 既有專案（先讀程式碼，記錄現有內容）· 更新（就地編輯既有規格並記錄修訂）。"
+                "en": "New app — greenfield (interview, then the seven documents) · existing project — brownfield (reads the code first, documents what is there, plans only the gap) · update (edits existing specs in place and logs the revision).",
+                "fr": "Nouvelle app — greenfield (entretien, puis les sept documents) · projet existant — brownfield (lit d'abord le code, documente ce qui existe, ne planifie que l'écart) · mise à jour (modifie les specs existantes sur place et consigne la révision).",
+                "zh": "新 App——全新專案（先訪談，再產出七份文件）· 既有專案（先讀程式碼，記錄現有內容，只規劃差距）· 更新（就地編輯既有規格並記錄修訂）。"
               }
             },
             {

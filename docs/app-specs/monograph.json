@@ -20,18 +20,18 @@
     "zh": "框定一個 App——無論是全新構想或既有程式碼。"
   },
   "lede": {
-    "en": "Greenfield: a short interview. Brownfield: it reads the code first and asks only what the code cannot tell. Either way, a one-page overview and six consistent documents in <code>docs/specs/</code>.",
-    "fr": "Greenfield : un court entretien. Brownfield : il lit d'abord le code et ne demande que ce que le code ne dit pas. Dans les deux cas, une présentation d'une page et six documents cohérents dans <code>docs/specs/</code>.",
-    "zh": "全新專案：一段簡短訪談。既有專案：先讀程式碼，只詢問程式碼無法回答的部分。兩者都會在 <code>docs/specs/</code> 產出一頁總覽與六份彼此一致的文件。"
+    "en": "This page is a user guide: what to prepare, what you will be asked, how to read the result, and what to do next.",
+    "fr": "Cette page est un guide d'utilisation : quoi préparer, ce qu'on vous demandera, comment lire le résultat et quoi faire ensuite.",
+    "zh": "本頁是一份使用指南：要準備什麼、會被問什麼、如何閱讀結果，以及接下來該做什麼。"
   },
   "actions": [
     {
       "primary": true,
-      "href": "#install",
+      "href": "#before",
       "label": {
-        "en": "Install",
-        "fr": "Installer",
-        "zh": "安裝"
+        "en": "Read the guide",
+        "fr": "Lire le guide",
+        "zh": "閱讀指南"
       }
     },
     {
@@ -87,327 +87,439 @@
   ],
   "opener": {
     "h": {
-      "en": "How it works",
-      "fr": "Comment ça marche",
-      "zh": "運作方式"
+      "en": "User guide",
+      "fr": "Guide d'utilisation",
+      "zh": "使用指南"
     },
     "p": {
-      "en": "Interview or read the code first, write everything at once, check before saying done.",
-      "fr": "D'abord l'entretien ou la lecture du code, puis tout est écrit d'un coup, et vérifié avant d'annoncer la fin.",
-      "zh": "先訪談或先讀程式碼，再一次寫完，宣告完成前先檢查。"
+      "en": "From an idea or a repo to specs you can build from.",
+      "fr": "D'une idée ou d'un dépôt à des specs sur lesquelles construire.",
+      "zh": "從一個構想或一個程式庫，到可以據以開發的規格。"
     }
   },
   "features": [
     {
       "h": {
-        "en": "Interview in short rounds",
-        "fr": "Entretien en tours courts",
-        "zh": "分輪簡短訪談"
+        "en": "Use it when",
+        "fr": "À utiliser quand",
+        "zh": "適用時機"
+      },
+      "p": [
+        {
+          "en": "You have an idea and an empty folder, and want to think it through before coding.",
+          "fr": "Vous avez une idée et un dossier vide, et voulez la mûrir avant de coder.",
+          "zh": "你有一個構想和一個空資料夾，想在寫程式前先想清楚。"
+        },
+        {
+          "en": "You inherit or revisit a codebase that has no up-to-date specs.",
+          "fr": "Vous reprenez ou retrouvez un code qui n'a pas de specs à jour.",
+          "zh": "你接手或重新檢視一個沒有最新規格的程式庫。"
+        },
+        {
+          "en": "Your specs have drifted away from the code.",
+          "fr": "Vos specs se sont éloignées du code.",
+          "zh": "你的規格已經和程式碼脫節。"
+        }
+      ]
+    },
+    {
+      "h": {
+        "en": "Skip it when",
+        "fr": "À éviter quand",
+        "zh": "不適用時機"
       },
       "p": {
-        "en": "Four rounds, multiple-choice where possible. Questions already answered — by your first message or the project files — are skipped.",
-        "fr": "Quatre tours, à choix multiples quand c'est possible. Les questions déjà résolues — par votre premier message ou les fichiers du projet — sont sautées.",
-        "zh": "四輪，盡可能採用選擇題。已經回答過的問題——無論來自你的第一則訊息或專案檔案——都會略過。"
+        "en": "The job is a one-off script or a quick fix: the specs would cost more than the code.",
+        "fr": "Il s'agit d'un script jetable ou d'un correctif rapide : les specs coûteraient plus cher que le code.",
+        "zh": "工作只是一次性的腳本或快速修正：撰寫規格的成本會高於程式碼本身。"
       }
     },
     {
       "h": {
-        "en": "Reads the code first",
-        "fr": "Lit d'abord le code",
-        "zh": "先讀程式碼"
+        "en": "You get",
+        "fr": "Vous obtenez",
+        "zh": "你會得到"
       },
       "p": {
-        "en": "On an existing codebase, it documents what is there instead of imagining it: stack, screens and routes, data model, services, auth, tests, CI and release. Each fact cites the file it was observed in.",
-        "fr": "Sur un code existant, il documente ce qui est là au lieu de l'imaginer : stack, écrans et routes, modèle de données, services, authentification, tests, CI et release. Chaque fait cite le fichier où il a été constaté.",
-        "zh": "在既有程式碼上，它記錄實際存在的內容而非憑空想像：技術堆疊、畫面與路由、資料模型、服務、驗證、測試、CI 與發佈。每項事實都註明觀察到的檔案。"
-      }
-    },
-    {
-      "h": {
-        "en": "No placeholder left",
-        "fr": "Aucun trou",
-        "zh": "不留空白"
-      },
-      "p": {
-        "en": "Every field is either answered by you or filled with a flagged assumption. “I don't know” is a valid answer: the skill picks, flags it, and lists it in the PRD's open questions.",
-        "fr": "Chaque champ est soit renseigné par vous, soit rempli par une hypothèse signalée. « Je ne sais pas » est une réponse valable : la skill choisit, le signale et le reporte dans les questions ouvertes du PRD.",
-        "zh": "每個欄位不是由你回答，就是填入標記過的假設。「我不知道」也是有效答案：技能會替你選擇、加上標記，並列入 PRD 的待決問題。"
-      }
-    },
-    {
-      "h": {
-        "en": "Contradictions surfaced",
-        "fr": "Contradictions remontées",
-        "zh": "揭露矛盾"
-      },
-      "p": {
-        "en": "Before writing, a summary of at most 25 lines lists features with priorities, contradictions with a proposed resolution, and the main assumptions. Nothing is written until you say so.",
-        "fr": "Avant d'écrire, un résumé de 25 lignes maximum liste les fonctionnalités et leurs priorités, les contradictions avec une résolution proposée, et les hypothèses principales. Rien n'est écrit sans votre accord.",
-        "zh": "動筆之前，一份最多 25 行的摘要會列出功能與優先順序、矛盾之處與建議解法，以及主要假設。未經你同意不會寫入任何內容。"
-      }
-    },
-    {
-      "h": {
-        "en": "Names that never drift",
-        "fr": "Des noms qui ne dérivent pas",
-        "zh": "名稱前後一致"
-      },
-      "p": {
-        "en": "Feature, screen and entity names are reused verbatim across documents; a traceability table links every priority feature to its screens, entities and tasks.",
-        "fr": "Les noms de fonctionnalités, d'écrans et d'entités sont repris à l'identique d'un document à l'autre ; une table de traçabilité relie chaque fonctionnalité prioritaire à ses écrans, entités et tâches.",
-        "zh": "功能、畫面與實體的名稱在各文件間逐字沿用；一張可追溯性表將每個優先功能連結到其畫面、實體與任務。"
-      }
-    },
-    {
-      "h": {
-        "en": "Scaled to the audience",
-        "fr": "À la mesure du public",
-        "zh": "依受眾調整規模"
-      },
-      "p": {
-        "en": "A solo, local tool gets no roles, no staging and a one-line cost estimate. Estimates are orders of magnitude with their basis, never false precision.",
-        "fr": "Un outil local pour soi seul n'a ni rôles, ni préproduction, et une estimation de coût en une ligne. Les estimations sont des ordres de grandeur avec leur base, jamais une fausse précision.",
-        "zh": "個人本機工具不需要角色、預備環境，成本估算只要一行。估算是附上依據的數量級，絕不假裝精確。"
-      }
-    },
-    {
-      "h": {
-        "en": "No secrets copied",
-        "fr": "Aucun secret recopié",
-        "zh": "不複製機密"
-      },
-      "p": {
-        "en": "Tokens, connection strings, internal hostnames and personal data never reach the specs, even when the code contains them. A setting is named by its variable only.",
-        "fr": "Jetons, chaînes de connexion, noms d'hôtes internes et données personnelles n'entrent jamais dans les specs, même si le code les contient. Un réglage est désigné par son nom de variable seulement.",
-        "zh": "權杖、連線字串、內部主機名稱與個人資料絕不會寫入規格，即使程式碼中含有它們。設定只以變數名稱表示。"
+        "en": "Seven Markdown files in <code>docs/specs/</code>: an overview, a PRD, a TRD, user flows, a design brief, a data model and an implementation plan — with consistent names, flagged assumptions, and a final automatic check.",
+        "fr": "Sept fichiers Markdown dans <code>docs/specs/</code> : une présentation, un PRD, un TRD, les parcours utilisateur, un brief de design, un modèle de données et un plan d'implémentation — avec des noms cohérents, des hypothèses signalées et un contrôle automatique final.",
+        "zh": "<code>docs/specs/</code> 中的七份 Markdown 檔案：總覽、PRD、TRD、使用者流程、設計簡報、資料模型與實作計畫——名稱一致、假設皆有標記，並經過最後的自動檢查。"
       }
     }
   ],
   "chapters": [
     {
-      "id": "interview",
+      "id": "install",
       "h": {
-        "en": "The interview",
-        "fr": "L'entretien",
-        "zh": "訪談"
+        "en": "Install",
+        "fr": "Installer",
+        "zh": "安裝"
       },
       "p": {
-        "en": "Four rounds, then a confirmation.",
-        "fr": "Quatre tours, puis une confirmation.",
-        "zh": "四輪，接著確認。"
+        "en": "Once, inside Claude Code.",
+        "fr": "Une fois, dans Claude Code.",
+        "zh": "在 Claude Code 中執行一次。"
+      },
+      "blocks": [
+        {
+          "type": "pre",
+          "code": "> /plugin marketplace add vincentlauriat/toolkit\n> /plugin install app-specs@vincentlauriat-toolkit"
+        },
+        {
+          "type": "p",
+          "t": {
+            "en": "Requires <code>python3</code> for the final check. Optional: <code>mmdc</code> (mermaid-cli) to render the diagrams.",
+            "fr": "Nécessite <code>python3</code> pour le contrôle final. En option : <code>mmdc</code> (mermaid-cli) pour dessiner les diagrammes.",
+            "zh": "最後的檢查需要 <code>python3</code>。選用：<code>mmdc</code>（mermaid-cli）以繪製圖表。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "before",
+      "h": {
+        "en": "Before you start",
+        "fr": "Avant de commencer",
+        "zh": "開始之前"
+      },
+      "p": {
+        "en": "Nothing is mandatory — “I don't know” is always an answer. Five minutes of thought just makes the specs sharper.",
+        "fr": "Rien n'est obligatoire — « je ne sais pas » est toujours une réponse. Cinq minutes de réflexion rendent simplement les specs plus précises.",
+        "zh": "沒有什麼是必填的——「我不知道」永遠是有效答案。花五分鐘想一想，只會讓規格更精確。"
+      },
+      "blocks": [
+        {
+          "type": "specs",
+          "items": [
+            {
+              "h": {
+                "en": "For a new idea",
+                "fr": "Pour une idée neuve",
+                "zh": "全新構想"
+              },
+              "p": [
+                {
+                  "en": "A name, even provisional, and the problem in one sentence.",
+                  "fr": "Un nom, même provisoire, et le problème en une phrase.",
+                  "zh": "一個名稱（暫定也可以），以及一句話說明的問題。"
+                },
+                {
+                  "en": "Who the users are, and what they do today instead.",
+                  "fr": "Qui sont les utilisateurs, et ce qu'ils font aujourd'hui à la place.",
+                  "zh": "使用者是誰，以及他們目前的替代做法。"
+                },
+                {
+                  "en": "Three to seven features, most important first — and what can wait.",
+                  "fr": "Trois à sept fonctionnalités, la plus importante d'abord — et ce qui peut attendre.",
+                  "zh": "三到七項功能，最重要的排第一——以及可以延後的部分。"
+                },
+                {
+                  "en": "One success signal you could measure: a number and a timeframe.",
+                  "fr": "Un signal de succès mesurable : un chiffre et un délai.",
+                  "zh": "一個可衡量的成功指標：一個數字加上時間範圍。"
+                },
+                {
+                  "en": "Optional: products to imitate or avoid, brand colours, deadline, budget, compliance.",
+                  "fr": "En option : produits à imiter ou à éviter, couleurs de marque, échéance, budget, conformité.",
+                  "zh": "選填：想仿效或避免的產品、品牌色彩、期限、預算、法規要求。"
+                }
+              ]
+            },
+            {
+              "h": {
+                "en": "For an existing codebase",
+                "fr": "Pour un code existant",
+                "zh": "既有程式庫"
+              },
+              "p": [
+                {
+                  "en": "Open Claude Code at the root of the repo.",
+                  "fr": "Ouvrez Claude Code à la racine du dépôt.",
+                  "zh": "在程式庫根目錄開啟 Claude Code。"
+                },
+                {
+                  "en": "Commit your work first: <code>git diff</code> will then show exactly what the skill added.",
+                  "fr": "Commitez d'abord votre travail : <code>git diff</code> montrera alors exactement ce que la skill a ajouté.",
+                  "zh": "先提交你的工作：之後 <code>git diff</code> 就能清楚顯示技能新增了什麼。"
+                },
+                {
+                  "en": "Know the real goal and audience — the code cannot tell them.",
+                  "fr": "Ayez en tête le vrai objectif et le public — le code ne les dit pas.",
+                  "zh": "想清楚真正的目標與受眾——程式碼無法告訴你這些。"
+                },
+                {
+                  "en": "Leave your README and docs as they are: they are read, never edited.",
+                  "fr": "Laissez votre README et vos docs tels quels : ils sont lus, jamais modifiés.",
+                  "zh": "README 與文件維持原狀即可：它們只會被讀取，不會被修改。"
+                }
+              ]
+            },
+            {
+              "h": {
+                "en": "Language",
+                "fr": "Langue",
+                "zh": "語言"
+              },
+              "p": {
+                "en": "The conversation follows your language. The documents follow your project's convention (for example a CLAUDE.md rule) unless you choose otherwise.",
+                "fr": "La conversation suit votre langue. Les documents suivent la convention du projet (par exemple une règle du CLAUDE.md), sauf si vous en décidez autrement.",
+                "zh": "對話會使用你的語言。文件則依循專案慣例（例如 CLAUDE.md 中的規則），除非你另有指定。"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "first",
+      "h": {
+        "en": "Your first session",
+        "fr": "Votre première séance",
+        "zh": "第一次使用"
+      },
+      "p": {
+        "en": "A new idea, from an empty folder.",
+        "fr": "Une idée neuve, dans un dossier vide.",
+        "zh": "從空資料夾開始一個新構想。"
       },
       "blocks": [
         {
           "type": "steps",
           "items": [
             {
-              "en": "The idea — name, problem, users, what they do today",
-              "fr": "L'idée — nom, problème, utilisateurs, ce qu'ils font aujourd'hui",
-              "zh": "構想——名稱、問題、使用者、他們目前的做法"
+              "en": "Type <code>/app-specs</code>, optionally followed by your idea in quotes. Whatever you say there is not asked again.",
+              "fr": "Tapez <code>/app-specs</code>, éventuellement suivi de votre idée entre guillemets. Ce que vous y dites ne sera pas redemandé.",
+              "zh": "輸入 <code>/app-specs</code>，可在後面以引號附上你的構想。你在這裡說過的內容不會再被問一次。"
             },
             {
-              "en": "Framing — platform, audience, accounts, documents language",
-              "fr": "Cadrage — plateforme, public, comptes, langue des documents",
-              "zh": "框定——平台、受眾、帳號、文件語言"
+              "en": "Round 1, in chat — the idea: name, problem, users, what they do today.",
+              "fr": "Tour 1, en texte libre — l'idée : nom, problème, utilisateurs, ce qu'ils font aujourd'hui.",
+              "zh": "第 1 輪，自由回答——構想：名稱、問題、使用者、目前的做法。"
             },
             {
-              "en": "Value and scope — goal, success signal, 3–7 features, out of scope, risks",
-              "fr": "Valeur et périmètre — objectif, signal de succès, 3 à 7 fonctionnalités, hors périmètre, risques",
-              "zh": "價值與範圍——目標、成功指標、3–7 項功能、範圍外項目、風險"
+              "en": "Round 2, multiple choice — platform, audience, accounts, documents language.",
+              "fr": "Tour 2, à choix multiples — plateforme, public, comptes, langue des documents.",
+              "zh": "第 2 輪，選擇題——平台、受眾、帳號、文件語言。"
             },
             {
-              "en": "Technique and look — stack, data, external services, design tone",
-              "fr": "Technique et apparence — stack, données, services externes, ton visuel",
-              "zh": "技術與外觀——技術堆疊、資料、外部服務、設計調性"
+              "en": "Round 3, in chat — goal and success signal, main features, out of scope, risks.",
+              "fr": "Tour 3, en texte libre — objectif et signal de succès, fonctionnalités principales, hors périmètre, risques.",
+              "zh": "第 3 輪，自由回答——目標與成功指標、主要功能、範圍外項目、風險。"
+            },
+            {
+              "en": "Round 4, multiple choice — stack, data, external services, design tone.",
+              "fr": "Tour 4, à choix multiples — stack, données, services externes, ton visuel.",
+              "zh": "第 4 輪，選擇題——技術堆疊、資料、外部服務、設計調性。"
+            },
+            {
+              "en": "Review the confirmation, then answer <b>Generate</b> or <b>Correct something</b>.",
+              "fr": "Relisez la confirmation, puis répondez <b>Générer</b> ou <b>Corriger quelque chose</b>.",
+              "zh": "檢視確認摘要，然後回答<b>產生</b>或<b>修正某處</b>。"
+            },
+            {
+              "en": "The seven files are written and checked. You get the file list, the top open questions and the next step.",
+              "fr": "Les sept fichiers sont écrits puis vérifiés. Vous recevez la liste des fichiers, les principales questions ouvertes et l'étape suivante.",
+              "zh": "七份檔案寫入並經過檢查。你會收到檔案清單、最重要的待決問題，以及下一步。"
             }
           ]
         },
         {
           "type": "p",
           "t": {
-            "en": "Then a confirmation: summary, features with priorities (P0 v1 must-have, P1 v1 if time, P2 later), contradictions with a proposed resolution, main assumptions — and one question: generate, or correct something.",
-            "fr": "Puis une confirmation : résumé, fonctionnalités avec priorités (P0 indispensable en v1, P1 en v1 si le temps le permet, P2 plus tard), contradictions avec une résolution proposée, hypothèses principales — et une seule question : générer, ou corriger quelque chose.",
-            "zh": "接著確認：摘要、功能與優先順序（P0 v1 必備、P1 時間允許時納入 v1、P2 之後）、矛盾與建議解法、主要假設——最後只問一題：產生，或修正某處。"
+            "en": "The confirmation is the moment that matters. It looks like this (illustrative):",
+            "fr": "La confirmation est le moment clé. Elle ressemble à ceci (exemple fictif) :",
+            "zh": "確認摘要是關鍵時刻，看起來像這樣（示意）："
           }
+        },
+        {
+          "type": "pre",
+          "code": "Summary        Fridge Chef · web · one household · docs in English\nFeatures       P0 Pantry list · P0 Recipe suggestions\n               P1 Shopping list · P2 Meal plan\n               P1 Usage counter  \"proposed\" — measures the success signal\nContradiction  Local-only data + LLM suggestions:\n               the API key needs a small server proxy.\n               Proposed: one serverless function.\nAssumptions    No accounts · UI in French\n\n? Generate / Correct something"
         },
         {
           "type": "p",
           "t": {
-            "en": "On an existing codebase, the four rounds are derived from the code; you are only asked what it cannot tell: the real goal and success metric, the audience, what is intentionally out of scope, the planned features.",
-            "fr": "Sur un code existant, les quatre tours sont déduits du code ; on ne vous demande que ce qu'il ne dit pas : le vrai objectif et l'indicateur de succès, le public, ce qui est volontairement hors périmètre, les fonctionnalités prévues.",
-            "zh": "在既有程式碼上，四輪內容由程式碼推導；只會詢問程式碼無法回答的部分：真正的目標與成功指標、受眾、刻意排除的範圍、規劃中的功能。"
+            "en": "Check three things: the features marked \"proposed\" (added by the skill, not by you), each contradiction and its proposed resolution, and the assumptions. Anything wrong: choose <b>Correct something</b> and say it in one sentence.",
+            "fr": "Vérifiez trois choses : les fonctionnalités marquées « proposée » (ajoutées par la skill, pas par vous), chaque contradiction et sa résolution proposée, et les hypothèses. Si quelque chose cloche : choisissez <b>Corriger quelque chose</b> et dites-le en une phrase.",
+            "zh": "檢查三件事：標示「建議」的功能（由技能而非你新增）、每個矛盾及其建議解法，以及各項假設。若有不對：選擇<b>修正某處</b>，用一句話說明。"
           }
         }
       ]
     },
     {
-      "id": "documents",
+      "id": "brownfield",
       "h": {
-        "en": "Seven documents",
-        "fr": "Sept documents",
-        "zh": "七份文件"
+        "en": "On an existing codebase",
+        "fr": "Sur un code existant",
+        "zh": "在既有程式庫上"
       },
       "p": {
-        "en": "Written in dependency order; the overview last.",
-        "fr": "Écrits dans l'ordre des dépendances ; la présentation en dernier.",
-        "zh": "依相依順序撰寫；總覽最後完成。"
+        "en": "Brownfield: the code speaks first.",
+        "fr": "Brownfield : le code parle en premier.",
+        "zh": "既有專案：先讓程式碼說話。"
       },
       "blocks": [
         {
-          "type": "specs",
+          "type": "steps",
           "items": [
             {
-              "h": "<code>00-overview.md</code>",
-              "p": {
-                "en": "One-page presentation of the project and map of the other documents",
-                "fr": "Présentation du projet en une page et carte des autres documents",
-                "zh": "一頁專案介紹與其他文件的地圖"
-              }
+              "en": "At the repo root, type <code>/app-specs</code> and choose <b>Document the existing code</b>.",
+              "fr": "À la racine du dépôt, tapez <code>/app-specs</code> et choisissez <b>Documenter l'existant</b>.",
+              "zh": "在程式庫根目錄輸入 <code>/app-specs</code>，選擇<b>記錄現有程式碼</b>。"
             },
             {
-              "h": "<code>01-prd.md</code>",
-              "p": {
-                "en": "What the product does, how success is measured, what could go wrong",
-                "fr": "Ce que fait le produit, comment mesurer le succès, ce qui peut mal tourner",
-                "zh": "產品做什麼、如何衡量成功、可能出什麼問題"
-              }
+              "en": "The skill reads the code — stack, routes, data, services, auth, tests, CI, release — plus the README and docs. On a large repo it delegates this to a sub-agent.",
+              "fr": "La skill lit le code — stack, routes, données, services, authentification, tests, CI, release — ainsi que le README et les docs. Sur un gros dépôt, elle confie cette lecture à un sous-agent.",
+              "zh": "技能會讀取程式碼——技術堆疊、路由、資料、服務、驗證、測試、CI、發佈——以及 README 與文件。大型程式庫會交給子代理處理。"
             },
             {
-              "h": "<code>02-trd.md</code>",
-              "p": {
-                "en": "Explicit technical choices, tests, run cost",
-                "fr": "Choix techniques explicites, tests, coût d'exploitation",
-                "zh": "明確的技術選擇、測試、營運成本"
-              }
+              "en": "It asks only what the code cannot tell: the real goal and success metric, the audience, what is intentionally out of scope, the planned features.",
+              "fr": "Elle ne demande que ce que le code ne dit pas : le vrai objectif et l'indicateur de succès, le public, ce qui est volontairement hors périmètre, les fonctionnalités prévues.",
+              "zh": "只詢問程式碼無法回答的部分：真正的目標與成功指標、受眾、刻意排除的範圍、規劃中的功能。"
             },
             {
-              "h": "<code>03-user-flows.md</code>",
-              "p": {
-                "en": "Every screen, path and state",
-                "fr": "Chaque écran, chemin et état",
-                "zh": "每個畫面、路徑與狀態"
-              }
+              "en": "Read the contradictions in the confirmation closely — between the code and your intent, or between the code and your docs. They are the most valuable output of this mode.",
+              "fr": "Lisez attentivement les contradictions dans la confirmation — entre le code et votre intention, ou entre le code et vos docs. C'est l'apport le plus précieux de ce mode.",
+              "zh": "仔細閱讀確認摘要中的矛盾——程式碼與你的意圖之間，或程式碼與文件之間。這是此模式最有價值的產出。"
             },
             {
-              "h": "<code>04-design-brief.md</code>",
-              "p": {
-                "en": "Visual direction and UX rules",
-                "fr": "Direction visuelle et règles UX",
-                "zh": "視覺方向與 UX 規則"
-              }
-            },
-            {
-              "h": "<code>05-data-model.md</code>",
-              "p": {
-                "en": "Data, relations, access rules",
-                "fr": "Données, relations, règles d'accès",
-                "zh": "資料、關聯、存取規則"
-              }
-            },
-            {
-              "h": "<code>06-implementation-plan.md</code>",
-              "p": {
-                "en": "Build order, effort, checkpoints, traceability table",
-                "fr": "Ordre de construction, effort, jalons, table de traçabilité",
-                "zh": "建置順序、工作量、檢查點、可追溯性表"
-              }
+              "en": "The specs are written: each fact cites the file it was observed in, each feature is shipped or planned, and the plan covers only the gap.",
+              "fr": "Les specs sont écrites : chaque fait cite le fichier où il a été constaté, chaque fonctionnalité est livrée ou prévue, et le plan ne couvre que l'écart.",
+              "zh": "規格寫入完成：每項事實都註明觀察到的檔案，每項功能標示已交付或規劃中，計畫只涵蓋差距。"
             }
           ]
-        }
-      ]
-    },
-    {
-      "id": "modes",
-      "h": {
-        "en": "Greenfield or brownfield",
-        "fr": "Greenfield ou brownfield",
-        "zh": "全新或既有專案"
-      },
-      "p": {
-        "en": "Three modes, picked from what is in the folder.",
-        "fr": "Trois modes, choisis d'après le contenu du dossier.",
-        "zh": "三種模式，依資料夾內容自動選擇。"
-      },
-      "blocks": [
-        {
-          "type": "specs",
-          "items": [
-            {
-              "h": {
-                "en": "New app — greenfield",
-                "fr": "Nouvelle app — greenfield",
-                "zh": "新 App——全新專案"
-              },
-              "p": {
-                "en": "Empty folder, or starting over: the interview, then the seven documents.",
-                "fr": "Dossier vide, ou repartir de zéro : l'entretien, puis les sept documents.",
-                "zh": "空資料夾或從頭開始：先訪談，再產出七份文件。"
-              }
-            },
-            {
-              "h": {
-                "en": "Existing project — brownfield",
-                "fr": "Projet existant — brownfield",
-                "zh": "既有專案"
-              },
-              "p": [
-                {
-                  "en": "Source code and no specs: reads the code first and documents what is there, each fact with the file it was observed in.",
-                  "fr": "Du code mais pas de specs : lit d'abord le code et documente ce qui existe, chaque fait avec le fichier où il a été constaté.",
-                  "zh": "有程式碼但沒有規格：先讀程式碼，記錄現有內容，每項事實都附上觀察到的檔案。"
-                },
-                {
-                  "en": "Every feature gets a status — shipped or planned. Existing docs (README, architecture notes) stay untouched; every contradiction between them and the code is listed, with the code's version as the default.",
-                  "fr": "Chaque fonctionnalité reçoit un statut — livrée ou prévue. Les docs existantes (README, notes d'architecture) ne sont pas touchées ; chaque contradiction entre elles et le code est listée, avec la version du code par défaut.",
-                  "zh": "每項功能都有狀態——已交付或規劃中。既有文件（README、架構筆記）保持不動；它們與程式碼之間的每處矛盾都會列出，預設以程式碼為準。"
-                },
-                {
-                  "en": "The implementation plan becomes an evolution plan: it covers only the gap between the code and the PRD.",
-                  "fr": "Le plan d'implémentation devient un plan d'évolution : il ne couvre que l'écart entre le code et le PRD.",
-                  "zh": "實作計畫變成演進計畫：只涵蓋程式碼與 PRD 之間的差距。"
-                }
-              ]
-            },
-            {
-              "h": {
-                "en": "Update",
-                "fr": "Mise à jour",
-                "zh": "更新"
-              },
-              "p": {
-                "en": "Specs already there: no new interview. Add or change a feature, record a technical change, or resync with the code. Edits in place — never regenerates a file you may have hand-edited — keeps numbering stable, and logs the revision in the PRD.",
-                "fr": "Specs déjà présentes : pas de nouvel entretien. Ajouter ou modifier une fonctionnalité, consigner un changement technique, ou resynchroniser avec le code. Modifie sur place — sans jamais régénérer un fichier que vous auriez retouché —, garde la numérotation stable et consigne la révision dans le PRD.",
-                "zh": "規格已存在：不重新訪談。新增或修改功能、記錄技術變更，或與程式碼重新同步。就地編輯——絕不重新產生你可能手動修改過的檔案——保持編號穩定，並在 PRD 中記錄修訂。"
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "example",
-      "h": {
-        "en": "Examples",
-        "fr": "Exemples",
-        "zh": "範例"
-      },
-      "blocks": [
-        {
-          "type": "pre",
-          "code": "# greenfield — an empty folder\n> /app-specs \"an app that suggests recipes from what's left in the fridge\"\n\n# brownfield — inside an existing repo\n> /app-specs\n  ? Document the existing code\n  ? Frame an evolution or a redesign\n  ? Start over\n\n# later — the specs exist, the code moved on\n> /app-specs\n  ? Add or change a feature\n  ? Technical change\n  ? Resync with the code\n\n# output, every time\ndocs/specs/\n  00-overview.md          01-prd.md\n  02-trd.md               03-user-flows.md\n  04-design-brief.md      05-data-model.md\n  06-implementation-plan.md"
         },
         {
           "type": "pre",
-          "code": "# brownfield PRD: status before priority, facts cite their source\n| Feature       | Benefit                   | Status  | Priority |\n|---------------|---------------------------|---------|----------|\n| Daily report  | See yesterday at a glance | shipped | P0       |\n| Export to CSV | Share with finance        | planned | P1       |\n\nDaily report runs at 06:00 UTC\n*(observed: src/jobs/report.ts)*"
+          "code": "| Feature       | Benefit                   | Status  | Priority |\n|---------------|---------------------------|---------|----------|\n| Daily report  | See yesterday at a glance | shipped | P0       |\n| Export to CSV | Share with finance        | planned | P1       |\n\nDaily report runs at 06:00 UTC\n*(observed: src/jobs/report.ts)*"
+        }
+      ]
+    },
+    {
+      "id": "read",
+      "h": {
+        "en": "Read the result",
+        "fr": "Lire le résultat",
+        "zh": "閱讀結果"
+      },
+      "p": {
+        "en": "In this order — you don't need to read everything.",
+        "fr": "Dans cet ordre — inutile de tout lire.",
+        "zh": "依此順序——不必全部讀完。"
+      },
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            {
+              "en": "<code>00-overview.md</code> — two minutes: what, why, key choices, next step.",
+              "fr": "<code>00-overview.md</code> — deux minutes : quoi, pourquoi, choix clés, étape suivante.",
+              "zh": "<code>00-overview.md</code>——兩分鐘：做什麼、為什麼、關鍵選擇、下一步。"
+            },
+            {
+              "en": "The <b>Open questions</b> of <code>01-prd.md</code> — decide them first. Each comes with a recommendation; together they cover every assumption that changes scope, cost, architecture or data handling.",
+              "fr": "Les <b>Questions ouvertes</b> de <code>01-prd.md</code> — tranchez-les d'abord. Chacune vient avec une recommandation ; ensemble, elles couvrent toutes les hypothèses qui changent le périmètre, le coût, l'architecture ou le traitement des données.",
+              "zh": "<code>01-prd.md</code> 的<b>待決問題</b>——先做決定。每題都附有建議；它們涵蓋所有會影響範圍、成本、架構或資料處理的假設。"
+            },
+            {
+              "en": "The flagged assumptions — search for <code>*(assumption)*</code> (<code>*(hypothèse)*</code> in French documents) and fix what is wrong.",
+              "fr": "Les hypothèses signalées — cherchez <code>*(hypothèse)*</code> (<code>*(assumption)*</code> dans des documents en anglais) et corrigez ce qui est faux.",
+              "zh": "標記的假設——搜尋 <code>*(assumption)*</code>（法文文件為 <code>*(hypothèse)*</code>），修正不正確之處。"
+            },
+            {
+              "en": "<code>06-implementation-plan.md</code> — the build order, effort and checkpoints. Its traceability table shows which screens, entities and tasks each feature needs.",
+              "fr": "<code>06-implementation-plan.md</code> — l'ordre de construction, l'effort et les jalons. Sa table de traçabilité montre les écrans, entités et tâches dont chaque fonctionnalité a besoin.",
+              "zh": "<code>06-implementation-plan.md</code>——建置順序、工作量與檢查點。其可追溯性表顯示每項功能需要哪些畫面、實體與任務。"
+            },
+            {
+              "en": "The rest when you need it: the TRD when choosing tech, user flows and design brief before UI work, the data model before the schema.",
+              "fr": "Le reste au besoin : le TRD pour les choix techniques, les parcours et le brief de design avant l'interface, le modèle de données avant le schéma.",
+              "zh": "其餘按需閱讀：選擇技術時看 TRD，做介面前看使用者流程與設計簡報，建立資料結構前看資料模型。"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "t": {
+            "en": "Edit the files freely: they are yours. A later update edits them in place and keeps your changes.",
+            "fr": "Modifiez les fichiers librement : ils sont à vous. Une mise à jour ultérieure les modifie sur place et conserve vos changements.",
+            "zh": "自由編輯這些檔案：它們屬於你。之後的更新會就地編輯並保留你的修改。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "build",
+      "h": {
+        "en": "Build from the specs",
+        "fr": "Construire à partir des specs",
+        "zh": "依規格開發"
+      },
+      "p": {
+        "en": "Hand them to Claude Code, one step at a time.",
+        "fr": "Confiez-les à Claude Code, une étape à la fois.",
+        "zh": "交給 Claude Code，一次一個步驟。"
+      },
+      "blocks": [
+        {
+          "type": "pre",
+          "code": "> Read docs/specs/ and implement step 1 of 06-implementation-plan.md.\n  Stop at its checkpoint and tell me what to test."
+        },
+        {
+          "type": "p",
+          "t": {
+            "en": "Each step of the plan ends with a checkpoint: verify it before moving to the next. Because names are identical across documents, you can point at a feature, a screen or an entity by name and Claude finds it everywhere.",
+            "fr": "Chaque étape du plan se termine par un jalon : vérifiez-le avant de passer à la suivante. Comme les noms sont identiques d'un document à l'autre, vous pouvez désigner une fonctionnalité, un écran ou une entité par son nom et Claude la retrouve partout.",
+            "zh": "計畫的每個步驟都以檢查點結束：確認後再進行下一步。由於名稱在各文件間完全一致，你可以直接以名稱指稱某個功能、畫面或實體，Claude 都能找到。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "update",
+      "h": {
+        "en": "Keep the specs alive",
+        "fr": "Faire vivre les specs",
+        "zh": "讓規格保持最新"
+      },
+      "p": {
+        "en": "Run it again whenever the plan or the code changes.",
+        "fr": "Relancez-la dès que le plan ou le code change.",
+        "zh": "每當計畫或程式碼改變時再次執行。"
+      },
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            {
+              "en": "In the same project, type <code>/app-specs</code>: existing specs switch it to update mode, with no new interview.",
+              "fr": "Dans le même projet, tapez <code>/app-specs</code> : la présence des specs bascule en mode mise à jour, sans nouvel entretien.",
+              "zh": "在同一個專案輸入 <code>/app-specs</code>：既有規格會讓它切換到更新模式，不重新訪談。"
+            },
+            {
+              "en": "Pick what changed — a feature, a technical choice, or a resync with the code — and describe it in one sentence.",
+              "fr": "Choisissez ce qui a changé — une fonctionnalité, un choix technique, ou une resynchronisation avec le code — et décrivez-le en une phrase.",
+              "zh": "選擇改變的內容——功能、技術選擇，或與程式碼重新同步——並用一句話描述。"
+            },
+            {
+              "en": "Confirm the delta: what changes, and what ripples into the other documents.",
+              "fr": "Validez le delta : ce qui change, et ce qui se répercute dans les autres documents.",
+              "zh": "確認差異：哪些改變，以及哪些會連帶影響其他文件。"
+            },
+            {
+              "en": "Files are edited in place; numbers stay stable; removed items are struck through with the date; the PRD's revision log gets a line.",
+              "fr": "Les fichiers sont modifiés sur place ; les numéros restent stables ; les éléments retirés sont barrés avec la date ; le journal des révisions du PRD reçoit une ligne.",
+              "zh": "檔案就地編輯；編號保持不變；移除的項目以刪除線並註明日期；PRD 的修訂紀錄新增一行。"
+            }
+          ]
         }
       ]
     },
     {
       "id": "checked",
       "h": {
-        "en": "Checked before done",
-        "fr": "Vérifié avant la fin",
-        "zh": "完成前先檢查"
+        "en": "What is checked",
+        "fr": "Ce qui est vérifié",
+        "zh": "檢查項目"
       },
       "p": {
         "en": "The checker proves structure, not truth.",
@@ -430,21 +542,77 @@
       ]
     },
     {
-      "id": "install",
+      "id": "faq",
       "h": {
-        "en": "Install",
-        "fr": "Installer",
-        "zh": "安裝"
-      },
-      "p": {
-        "en": "Inside Claude Code.",
-        "fr": "Dans Claude Code.",
-        "zh": "在 Claude Code 中。"
+        "en": "Questions",
+        "fr": "Questions fréquentes",
+        "zh": "常見問題"
       },
       "blocks": [
         {
-          "type": "pre",
-          "code": "# 1. add the marketplace\n> /plugin marketplace add vincentlauriat/toolkit\n\n# 2. install the plugin\n> /plugin install app-specs@vincentlauriat-toolkit\n\n# 3. in a new folder or an existing repo\n> /app-specs"
+          "type": "specs",
+          "items": [
+            {
+              "h": {
+                "en": "Does it touch my code?",
+                "fr": "Touche-t-elle à mon code ?",
+                "zh": "會動到我的程式碼嗎？"
+              },
+              "p": {
+                "en": "No. It writes the specs in <code>docs/specs/</code>, plus one line in tracking files such as CHANGES.md or TODOS.md if your project keeps them.",
+                "fr": "Non. Elle écrit les specs dans <code>docs/specs/</code>, plus une ligne dans les fichiers de suivi comme CHANGES.md ou TODOS.md si votre projet en a.",
+                "zh": "不會。它只在 <code>docs/specs/</code> 寫入規格，若專案有 CHANGES.md 或 TODOS.md 等追蹤檔，會各加一行。"
+              }
+            },
+            {
+              "h": {
+                "en": "What if I don't know an answer?",
+                "fr": "Et si je ne connais pas la réponse ?",
+                "zh": "如果我不知道答案？"
+              },
+              "p": {
+                "en": "Say “I don't know” or “propose”. The skill chooses, flags the choice as an assumption and lists it in the PRD's open questions.",
+                "fr": "Dites « je ne sais pas » ou « propose ». La skill choisit, signale ce choix comme hypothèse et l'inscrit dans les questions ouvertes du PRD.",
+                "zh": "說「我不知道」或「你提議」。技能會替你選擇，標記為假設，並列入 PRD 的待決問題。"
+              }
+            },
+            {
+              "h": {
+                "en": "A proposed feature is wrong.",
+                "fr": "Une fonctionnalité proposée ne convient pas.",
+                "zh": "建議的功能不對。"
+              },
+              "p": {
+                "en": "Choose <b>Correct something</b> at the confirmation and say so. Nothing is written before you choose <b>Generate</b>.",
+                "fr": "Choisissez <b>Corriger quelque chose</b> à la confirmation et dites-le. Rien n'est écrit avant que vous choisissiez <b>Générer</b>.",
+                "zh": "在確認時選擇<b>修正某處</b>並說明。在你選擇<b>產生</b>之前不會寫入任何內容。"
+              }
+            },
+            {
+              "h": {
+                "en": "Where do the files go?",
+                "fr": "Où vont les fichiers ?",
+                "zh": "檔案放在哪裡？"
+              },
+              "p": {
+                "en": "In <code>docs/specs/</code>, created if needed. If numbered spec files already sit at the project root, they stay there.",
+                "fr": "Dans <code>docs/specs/</code>, créé au besoin. Si des fichiers de specs numérotés sont déjà à la racine du projet, ils y restent.",
+                "zh": "放在 <code>docs/specs/</code>，必要時自動建立。若專案根目錄已有編號的規格檔，則保留在原處。"
+              }
+            },
+            {
+              "h": {
+                "en": "Will secrets end up in the specs?",
+                "fr": "Des secrets vont-ils se retrouver dans les specs ?",
+                "zh": "機密會出現在規格中嗎？"
+              },
+              "p": {
+                "en": "No. Tokens, connection strings, internal hostnames and personal data are never copied, even when the code contains them; a setting is named by its variable only.",
+                "fr": "Non. Jetons, chaînes de connexion, noms d'hôtes internes et données personnelles ne sont jamais recopiés, même si le code les contient ; un réglage est désigné par son nom de variable seulement.",
+                "zh": "不會。權杖、連線字串、內部主機名稱與個人資料絕不會被複製，即使程式碼中含有它們；設定只以變數名稱表示。"
+              }
+            }
+          ]
         }
       ]
     }

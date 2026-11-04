@@ -333,12 +333,12 @@
         },
         {
           "type": "pre",
-          "code": "Summary        Fridge Chef · web · one household · docs in English\nFeatures       P0 Pantry list · P0 Recipe suggestions\n               P1 Shopping list · P2 Meal plan\n               P1 Usage counter  « proposed » — measures the success signal\nContradiction  Local-only data + LLM suggestions:\n               the API key needs a small server proxy.\n               Proposed: one serverless function.\nAssumptions    No accounts · UI in French\n\n? Generate / Correct something"
+          "code": "Summary        Fridge Chef · web · one household · docs in English\nFeatures       P0 Pantry list · P0 Recipe suggestions\n               P1 Shopping list · P2 Meal plan\n               P1 Usage counter  \"proposed\" — measures the success signal\nContradiction  Local-only data + LLM suggestions:\n               the API key needs a small server proxy.\n               Proposed: one serverless function.\nAssumptions    No accounts · UI in French\n\n? Generate / Correct something"
         },
         {
           "type": "p",
           "t": {
-            "en": "Check three things: the features marked « proposed » (added by the skill, not by you), each contradiction and its proposed resolution, and the assumptions. Anything wrong: choose <b>Correct something</b> and say it in one sentence.",
+            "en": "Check three things: the features marked \"proposed\" (added by the skill, not by you), each contradiction and its proposed resolution, and the assumptions. Anything wrong: choose <b>Correct something</b> and say it in one sentence.",
             "fr": "Vérifiez trois choses : les fonctionnalités marquées « proposée » (ajoutées par la skill, pas par vous), chaque contradiction et sa résolution proposée, et les hypothèses. Si quelque chose cloche : choisissez <b>Corriger quelque chose</b> et dites-le en une phrase.",
             "zh": "檢查三件事：標示「建議」的功能（由技能而非你新增）、每個矛盾及其建議解法，以及各項假設。若有不對：選擇<b>修正某處</b>，用一句話說明。"
           }

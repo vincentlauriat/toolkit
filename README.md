@@ -34,16 +34,18 @@ Produces a structured `audit-{subject}/` folder with up to 10 Markdown sections 
 
 ### `app-specs`
 
-Frame an app before coding: a short interview (four rounds, multiple-choice where possible), then a one-page overview plus six consistent documents written in `docs/specs/`. It also works on an existing codebase (documents what the code does) and can update existing specs in place.
+Frame an app — a new idea (greenfield) or an existing codebase (brownfield) — as a one-page overview plus six consistent documents written in `docs/specs/`.
+
+- **Greenfield**: a short interview (four rounds, multiple-choice where possible), then the seven documents.
+- **Brownfield**: reads the code first and asks only what the code cannot tell (goal, audience, out of scope, planned features). Every fact cites the file it was observed in, every feature is marked shipped or planned, contradictions with existing docs are listed (the code wins by default), and the implementation plan covers only the gap.
+- **Update**: once specs exist, edits them in place — add a feature, record a technical change, resync with the code — and logs the revision.
 
 ```shell
-/app-specs
-/app-specs "an app that suggests recipes from what's left in the fridge"
+/app-specs "an app that suggests recipes from what's left in the fridge"   # greenfield
+/app-specs                                                                # brownfield, inside an existing repo
 ```
 
 Produces `00-overview.md` (project presentation and document map, written last), `01-prd.md`, `02-trd.md`, `03-user-flows.md`, `04-design-brief.md`, `05-data-model.md` and `06-implementation-plan.md`. Unknown answers become flagged assumptions collected in the PRD's open questions; a traceability table links every priority feature to its screens, entities and tasks, and is checked before the skill reports done by a shipped script (`check.py`, with a self-test that proves it catches failures).
-
-**Modes**: new app (empty folder: interview, then the seven documents) · existing project (reads the code first and documents what is there) · update (edits existing specs in place and logs the revision).
 
 **Homepage**: https://vincentlauriat.github.io/toolkit/app-specs/
 

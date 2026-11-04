@@ -6,23 +6,23 @@
   "accent": "#2dd4bf",
   "meta": {
     "title": "app-specs — frame an app before coding · Claude Code plugin",
-    "description": "A Claude Code plugin that interviews you about an app idea, then writes a project overview and six consistent framing documents: PRD, TRD, user flows, UI/UX design brief, data model and implementation plan.",
+    "description": "A Claude Code plugin that frames an app — a new idea (greenfield) or an existing codebase (brownfield) — as a project overview and six consistent documents: PRD, TRD, user flows, UI/UX design brief, data model and implementation plan.",
     "favicon": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0a0f'/%3E%3Cpath d='M14 22l10 10-10 10' fill='none' stroke='%23c084fc' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M32 42h18' stroke='%23c084fc' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E"
   },
   "role": {
-    "en": "Claude Code plugin · app framing",
-    "fr": "Plugin Claude Code · cadrage d'app",
-    "zh": "Claude Code 外掛 · App 框定"
+    "en": "Claude Code plugin · app framing, greenfield or brownfield",
+    "fr": "Plugin Claude Code · cadrage d'app, greenfield ou brownfield",
+    "zh": "Claude Code 外掛 · App 框定，全新或既有專案"
   },
   "thesis": {
-    "en": "Frame an app before you write a line of code.",
-    "fr": "Cadrez une app avant d'écrire une ligne de code.",
-    "zh": "在寫下第一行程式碼之前，先框定你的 App。"
+    "en": "Frame an app — a new idea or an existing codebase.",
+    "fr": "Cadrez une app — une idée neuve ou un code existant.",
+    "zh": "框定一個 App——無論是全新構想或既有程式碼。"
   },
   "lede": {
-    "en": "A short interview, then a one-page overview and six consistent documents in <code>docs/specs/</code>.",
-    "fr": "Un court entretien, puis une présentation d'une page et six documents cohérents dans <code>docs/specs/</code>.",
-    "zh": "一段簡短訪談，接著在 <code>docs/specs/</code> 產出一頁總覽與六份彼此一致的文件。"
+    "en": "Greenfield: a short interview. Brownfield: it reads the code first and asks only what the code cannot tell. Either way, a one-page overview and six consistent documents in <code>docs/specs/</code>.",
+    "fr": "Greenfield : un court entretien. Brownfield : il lit d'abord le code et ne demande que ce que le code ne dit pas. Dans les deux cas, une présentation d'une page et six documents cohérents dans <code>docs/specs/</code>.",
+    "zh": "全新專案：一段簡短訪談。既有專案：先讀程式碼，只詢問程式碼無法回答的部分。兩者都會在 <code>docs/specs/</code> 產出一頁總覽與六份彼此一致的文件。"
   },
   "actions": [
     {
@@ -92,9 +92,9 @@
       "zh": "運作方式"
     },
     "p": {
-      "en": "Interview first, write everything at once, check before saying done.",
-      "fr": "D'abord l'entretien, puis tout est écrit d'un coup, et vérifié avant d'annoncer la fin.",
-      "zh": "先訪談，再一次寫完，宣告完成前先檢查。"
+      "en": "Interview or read the code first, write everything at once, check before saying done.",
+      "fr": "D'abord l'entretien ou la lecture du code, puis tout est écrit d'un coup, et vérifié avant d'annoncer la fin.",
+      "zh": "先訪談或先讀程式碼，再一次寫完，宣告完成前先檢查。"
     }
   },
   "features": [
@@ -108,6 +108,18 @@
         "en": "Four rounds, multiple-choice where possible. Questions already answered — by your first message or the project files — are skipped.",
         "fr": "Quatre tours, à choix multiples quand c'est possible. Les questions déjà résolues — par votre premier message ou les fichiers du projet — sont sautées.",
         "zh": "四輪，盡可能採用選擇題。已經回答過的問題——無論來自你的第一則訊息或專案檔案——都會略過。"
+      }
+    },
+    {
+      "h": {
+        "en": "Reads the code first",
+        "fr": "Lit d'abord le code",
+        "zh": "先讀程式碼"
+      },
+      "p": {
+        "en": "On an existing codebase, it documents what is there instead of imagining it: stack, screens and routes, data model, services, auth, tests, CI and release. Each fact cites the file it was observed in.",
+        "fr": "Sur un code existant, il documente ce qui est là au lieu de l'imaginer : stack, écrans et routes, modèle de données, services, authentification, tests, CI et release. Chaque fait cite le fichier où il a été constaté.",
+        "zh": "在既有程式碼上，它記錄實際存在的內容而非憑空想像：技術堆疊、畫面與路由、資料模型、服務、驗證、測試、CI 與發佈。每項事實都註明觀察到的檔案。"
       }
     },
     {
@@ -217,6 +229,14 @@
             "fr": "Puis une confirmation : résumé, fonctionnalités avec priorités (P0 indispensable en v1, P1 en v1 si le temps le permet, P2 plus tard), contradictions avec une résolution proposée, hypothèses principales — et une seule question : générer, ou corriger quelque chose.",
             "zh": "接著確認：摘要、功能與優先順序（P0 v1 必備、P1 時間允許時納入 v1、P2 之後）、矛盾與建議解法、主要假設——最後只問一題：產生，或修正某處。"
           }
+        },
+        {
+          "type": "p",
+          "t": {
+            "en": "On an existing codebase, the four rounds are derived from the code; you are only asked what it cannot tell: the real goal and success metric, the audience, what is intentionally out of scope, the planned features.",
+            "fr": "Sur un code existant, les quatre tours sont déduits du code ; on ne vous demande que ce qu'il ne dit pas : le vrai objectif et l'indicateur de succès, le public, ce qui est volontairement hors périmètre, les fonctionnalités prévues.",
+            "zh": "在既有程式碼上，四輪內容由程式碼推導；只會詢問程式碼無法回答的部分：真正的目標與成功指標、受眾、刻意排除的範圍、規劃中的功能。"
+          }
         }
       ]
     },
@@ -299,14 +319,14 @@
     {
       "id": "modes",
       "h": {
-        "en": "Three modes",
-        "fr": "Trois modes",
-        "zh": "三種模式"
+        "en": "Greenfield or brownfield",
+        "fr": "Greenfield ou brownfield",
+        "zh": "全新或既有專案"
       },
       "p": {
-        "en": "Picked from what is in the folder.",
-        "fr": "Choisi d'après le contenu du dossier.",
-        "zh": "依資料夾內容自動選擇。"
+        "en": "Three modes, picked from what is in the folder.",
+        "fr": "Trois modes, choisis d'après le contenu du dossier.",
+        "zh": "三種模式，依資料夾內容自動選擇。"
       },
       "blocks": [
         {
@@ -314,9 +334,9 @@
           "items": [
             {
               "h": {
-                "en": "New app",
-                "fr": "Nouvelle app",
-                "zh": "新 App"
+                "en": "New app — greenfield",
+                "fr": "Nouvelle app — greenfield",
+                "zh": "新 App——全新專案"
               },
               "p": {
                 "en": "Empty folder, or starting over: the interview, then the seven documents.",
@@ -326,15 +346,27 @@
             },
             {
               "h": {
-                "en": "Existing project",
-                "fr": "Projet existant",
+                "en": "Existing project — brownfield",
+                "fr": "Projet existant — brownfield",
                 "zh": "既有專案"
               },
-              "p": {
-                "en": "Source code and no specs: reads the code first, documents what is there with the file it was observed in, and turns the plan into an evolution plan covering only the gap.",
-                "fr": "Du code mais pas de specs : lit d'abord le code, documente ce qui existe en citant le fichier où c'est constaté, et fait du plan un plan d'évolution qui ne couvre que l'écart.",
-                "zh": "有程式碼但沒有規格：先讀程式碼，記錄現有內容並註明觀察到的檔案，並把計畫改為只涵蓋差距的演進計畫。"
-              }
+              "p": [
+                {
+                  "en": "Source code and no specs: reads the code first and documents what is there, each fact with the file it was observed in.",
+                  "fr": "Du code mais pas de specs : lit d'abord le code et documente ce qui existe, chaque fait avec le fichier où il a été constaté.",
+                  "zh": "有程式碼但沒有規格：先讀程式碼，記錄現有內容，每項事實都附上觀察到的檔案。"
+                },
+                {
+                  "en": "Every feature gets a status — shipped or planned. Existing docs (README, architecture notes) stay untouched; every contradiction between them and the code is listed, with the code's version as the default.",
+                  "fr": "Chaque fonctionnalité reçoit un statut — livrée ou prévue. Les docs existantes (README, notes d'architecture) ne sont pas touchées ; chaque contradiction entre elles et le code est listée, avec la version du code par défaut.",
+                  "zh": "每項功能都有狀態——已交付或規劃中。既有文件（README、架構筆記）保持不動；它們與程式碼之間的每處矛盾都會列出，預設以程式碼為準。"
+                },
+                {
+                  "en": "The implementation plan becomes an evolution plan: it covers only the gap between the code and the PRD.",
+                  "fr": "Le plan d'implémentation devient un plan d'évolution : il ne couvre que l'écart entre le code et le PRD.",
+                  "zh": "實作計畫變成演進計畫：只涵蓋程式碼與 PRD 之間的差距。"
+                }
+              ]
             },
             {
               "h": {
@@ -343,9 +375,9 @@
                 "zh": "更新"
               },
               "p": {
-                "en": "Specs already there: no new interview. Edits in place — never regenerates a file you may have hand-edited — keeps numbering stable, and logs the revision in the PRD.",
-                "fr": "Specs déjà présentes : pas de nouvel entretien. Modifie sur place — sans jamais régénérer un fichier que vous auriez retouché —, garde la numérotation stable et consigne la révision dans le PRD.",
-                "zh": "規格已存在：不重新訪談。就地編輯——絕不重新產生你可能手動修改過的檔案——保持編號穩定，並在 PRD 中記錄修訂。"
+                "en": "Specs already there: no new interview. Add or change a feature, record a technical change, or resync with the code. Edits in place — never regenerates a file you may have hand-edited — keeps numbering stable, and logs the revision in the PRD.",
+                "fr": "Specs déjà présentes : pas de nouvel entretien. Ajouter ou modifier une fonctionnalité, consigner un changement technique, ou resynchroniser avec le code. Modifie sur place — sans jamais régénérer un fichier que vous auriez retouché —, garde la numérotation stable et consigne la révision dans le PRD.",
+                "zh": "規格已存在：不重新訪談。新增或修改功能、記錄技術變更，或與程式碼重新同步。就地編輯——絕不重新產生你可能手動修改過的檔案——保持編號穩定，並在 PRD 中記錄修訂。"
               }
             }
           ]
@@ -355,14 +387,18 @@
     {
       "id": "example",
       "h": {
-        "en": "Example",
-        "fr": "Exemple",
+        "en": "Examples",
+        "fr": "Exemples",
         "zh": "範例"
       },
       "blocks": [
         {
           "type": "pre",
-          "code": "> /app-specs\n> /app-specs \"an app that suggests recipes from what's left in the fridge\"\n\n# output\ndocs/specs/\n  00-overview.md          01-prd.md\n  02-trd.md               03-user-flows.md\n  04-design-brief.md      05-data-model.md\n  06-implementation-plan.md"
+          "code": "# greenfield — an empty folder\n> /app-specs \"an app that suggests recipes from what's left in the fridge\"\n\n# brownfield — inside an existing repo\n> /app-specs\n  ? Document the existing code\n  ? Frame an evolution or a redesign\n  ? Start over\n\n# later — the specs exist, the code moved on\n> /app-specs\n  ? Add or change a feature\n  ? Technical change\n  ? Resync with the code\n\n# output, every time\ndocs/specs/\n  00-overview.md          01-prd.md\n  02-trd.md               03-user-flows.md\n  04-design-brief.md      05-data-model.md\n  06-implementation-plan.md"
+        },
+        {
+          "type": "pre",
+          "code": "# brownfield PRD: status before priority, facts cite their source\n| Feature       | Benefit                   | Status  | Priority |\n|---------------|---------------------------|---------|----------|\n| Daily report  | See yesterday at a glance | shipped | P0       |\n| Export to CSV | Share with finance        | planned | P1       |\n\nDaily report runs at 06:00 UTC\n*(observed: src/jobs/report.ts)*"
         }
       ]
     },
@@ -408,16 +444,16 @@
       "blocks": [
         {
           "type": "pre",
-          "code": "# 1. add the marketplace\n> /plugin marketplace add vincentlauriat/toolkit\n\n# 2. install the plugin\n> /plugin install app-specs@vincentlauriat-toolkit\n\n# 3. in a new project folder\n> /app-specs"
+          "code": "# 1. add the marketplace\n> /plugin marketplace add vincentlauriat/toolkit\n\n# 2. install the plugin\n> /plugin install app-specs@vincentlauriat-toolkit\n\n# 3. in a new folder or an existing repo\n> /app-specs"
         }
       ]
     }
   ],
   "close": {
     "h": {
-      "en": "Frame first, code second.",
-      "fr": "D'abord cadrer, ensuite coder.",
-      "zh": "先框定，再寫程式。"
+      "en": "Frame first — then build, or evolve.",
+      "fr": "D'abord cadrer — ensuite construire, ou faire évoluer.",
+      "zh": "先框定——再建置，或持續演進。"
     },
     "actions": [
       {

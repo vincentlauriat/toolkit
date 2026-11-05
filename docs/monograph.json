@@ -6,7 +6,7 @@
   "accent": "#c084fc",
   "meta": {
     "title": "toolkit — Claude Code plugins by Vincent Lauriat",
-    "description": "A personal collection of Claude Code plugins: audit-report generates exhaustive audit dossiers on any company, product, technology or market; app-specs frames an app — new idea or existing codebase — with a PRD, TRD, user flows, design brief, data model and implementation plan.",
+    "description": "A personal collection of Claude Code plugins: audit-report generates exhaustive audit dossiers on any company, product, technology or market; Marcel frames an app — new idea or existing codebase — with a PRD, TRD, user flows, design brief, data model and implementation plan.",
     "favicon": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0a0f'/%3E%3Cpath d='M14 22l10 10-10 10' fill='none' stroke='%23c084fc' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M32 42h18' stroke='%23c084fc' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E"
   },
   "role": {
@@ -103,12 +103,12 @@
       ]
     },
     {
-      "h": "/app-specs",
+      "h": "/marcel",
       "p": [
         {
-          "en": "Frame an app — a new idea (greenfield) or an existing codebase (brownfield): a one-page overview plus six consistent documents written in <code>docs/specs/</code>.",
-          "fr": "Cadrez une app — une idée neuve (greenfield) ou un code existant (brownfield) : une présentation d'une page et six documents cohérents écrits dans <code>docs/specs/</code>.",
-          "zh": "框定一個 App——全新構想或既有程式碼：在 <code>docs/specs/</code> 中產出一頁總覽與六份彼此一致的文件。"
+          "en": "<b>Marcel</b> — frame an app before coding: a new idea (greenfield) or an existing codebase (brownfield), as a one-page overview plus six consistent documents written in <code>docs/specs/</code>.",
+          "fr": "<b>Marcel</b> — cadrer une app avant de coder : une idée neuve (greenfield) ou un code existant (brownfield), en une présentation d'une page et six documents cohérents écrits dans <code>docs/specs/</code>.",
+          "zh": "<b>Marcel</b>——寫程式之前先框定 App：全新構想或既有程式碼，在 <code>docs/specs/</code> 中產出一頁總覽與六份彼此一致的文件。"
         },
         {
           "en": "Greenfield starts with a short interview (four rounds, multiple-choice where possible). Brownfield reads the code first, documents what is there with the file each fact comes from, and turns the plan into an evolution plan. Existing specs are updated in place.",
@@ -116,9 +116,9 @@
           "zh": "全新專案從一段簡短訪談開始（四輪，盡可能採用選擇題）。既有專案則先讀程式碼，記錄現有內容並註明每項事實的來源檔案，並把計畫改為演進計畫。既有規格會就地更新。"
         },
         {
-          "en": "<a href=\"https://vincentlauriat.github.io/toolkit/app-specs/\">app-specs homepage</a>",
-          "fr": "<a href=\"https://vincentlauriat.github.io/toolkit/app-specs/\">Page d'accueil d'app-specs</a>",
-          "zh": "<a href=\"https://vincentlauriat.github.io/toolkit/app-specs/\">app-specs 首頁</a>"
+          "en": "<a href=\"https://vincentlauriat.github.io/toolkit/marcel/\">Marcel homepage</a>",
+          "fr": "<a href=\"https://vincentlauriat.github.io/toolkit/marcel/\">Page d'accueil de Marcel</a>",
+          "zh": "<a href=\"https://vincentlauriat.github.io/toolkit/marcel/\">Marcel 首頁</a>"
         }
       ]
     }
@@ -217,16 +217,16 @@
       ]
     },
     {
-      "id": "app-specs",
+      "id": "marcel",
       "h": {
-        "en": "app-specs — examples",
-        "fr": "app-specs — exemples",
-        "zh": "app-specs — 範例"
+        "en": "Marcel — examples",
+        "fr": "Marcel — exemples",
+        "zh": "Marcel — 範例"
       },
       "blocks": [
         {
           "type": "pre",
-          "code": "# greenfield — an empty folder\n> /app-specs \"an app that suggests recipes from what's left in the fridge\"\n\n# brownfield — inside an existing repo\n> /app-specs\n\n# output\ndocs/specs/\n  00-overview.md          01-prd.md\n  02-trd.md               03-user-flows.md\n  04-design-brief.md      05-data-model.md\n  06-implementation-plan.md"
+          "code": "# greenfield — an empty folder\n> /marcel \"an app that suggests recipes from what's left in the fridge\"\n\n# brownfield — inside an existing repo\n> /marcel\n\n# output\ndocs/specs/\n  00-overview.md          01-prd.md\n  02-trd.md               03-user-flows.md\n  04-design-brief.md      05-data-model.md\n  06-implementation-plan.md"
         }
       ]
     },
@@ -341,7 +341,7 @@
       "blocks": [
         {
           "type": "pre",
-          "code": "# 1. add the marketplace\n> /plugin marketplace add vincentlauriat/toolkit\n\n# 2. install a plugin — or browse them all with /plugin\n> /plugin install audit-report@vincentlauriat-toolkit\n> /plugin install app-specs@vincentlauriat-toolkit"
+          "code": "# 1. add the marketplace\n> /plugin marketplace add vincentlauriat/toolkit\n\n# 2. install a plugin — or browse them all with /plugin\n> /plugin install audit-report@vincentlauriat-toolkit\n> /plugin install marcel@vincentlauriat-toolkit"
         }
       ]
     }

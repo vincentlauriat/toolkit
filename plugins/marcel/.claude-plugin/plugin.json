@@ -1,6 +1,6 @@
 {
   "name": "marcel",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Interview the user about an app idea, then write a project overview and six consistent framing documents: PRD, TRD, user flows, UI/UX design brief, data model and implementation plan. Also documents an existing codebase and updates existing specs in place.",
   "author": {
     "name": "Vincent Lauriat"

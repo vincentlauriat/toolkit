@@ -36,6 +36,8 @@ Produces a structured `audit-{subject}/` folder with up to 10 Markdown sections 
 
 *Formerly `app-specs`. If you installed it, run `/plugin uninstall app-specs@vincentlauriat-toolkit`, then install `marcel`.*
 
+Marcel speaks as a coach: he explains why each question matters and what each term means, in plain words.
+
 Frame an app — a new idea (greenfield) or an existing codebase (brownfield) — as a one-page overview plus six consistent documents written in `docs/specs/`.
 
 - **Greenfield**: a short interview (four rounds, multiple-choice where possible), then the seven documents.

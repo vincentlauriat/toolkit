@@ -153,6 +153,15 @@ def traceability(plan):
     return {r[0]: r for t in tables(plan) for r in t if len(r) >= 5 and PRIO.match(r[1])}
 
 
+def drop_line(text, line):
+    """Remove the first line equal to `line`, whatever its line ending (or none, at end of file)."""
+    lines = text.splitlines(keepends=True)
+    for i, l in enumerate(lines):
+        if l.rstrip("\r\n") == line:
+            return "".join(lines[:i] + lines[i + 1:])
+    return text
+
+
 def trace_line(plan, feature):
     """Raw markdown line of the traceability row for `feature`."""
     for line in plan.splitlines():
@@ -207,7 +216,7 @@ def self_test(d):
         "placeholder inserted": ("02-trd.md", lambda t: t + "\n{{test}}\n"),
         "empty file": ("04-design-brief.md", lambda t: ""),
         "overview link removed": ("00-overview.md", lambda t: t.replace("06-implementation-plan.md", "")),
-        "traceability row removed": ("06-implementation-plan.md", lambda t: t.replace(row + "\n", "", 1)),
+        "traceability row removed": ("06-implementation-plan.md", lambda t: drop_line(t, row)),
         "unknown screen in traceability": ("06-implementation-plan.md", lambda t: t.replace(row, bad_screen, 1)),
     }
     bad = 0

@@ -156,9 +156,9 @@
         "zh": "安裝"
       },
       "p": {
-        "en": "Once, inside Claude Code.",
-        "fr": "Une fois, dans Claude Code.",
-        "zh": "在 Claude Code 中執行一次。"
+        "en": "Once, inside Claude Code. No terminal? See <a href=\"#devices\">Which device?</a>",
+        "fr": "Une fois, dans Claude Code. Pas de terminal ? Voir <a href=\"#devices\">Sur quel appareil ?</a>",
+        "zh": "在 Claude Code 中執行一次。沒有終端機？請看<a href=\"#devices\">用哪個裝置？</a>"
       },
       "blocks": [
         {
@@ -171,6 +171,103 @@
             "en": "Requires <code>python3</code> for the final check. Optional: <code>mmdc</code> (mermaid-cli) to render the diagrams.",
             "fr": "Nécessite <code>python3</code> pour le contrôle final. En option : <code>mmdc</code> (mermaid-cli) pour dessiner les diagrammes.",
             "zh": "最後的檢查需要 <code>python3</code>。選用：<code>mmdc</code>（mermaid-cli）以繪製圖表。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "devices",
+      "h": {
+        "en": "Which device?",
+        "fr": "Sur quel appareil ?",
+        "zh": "用哪個裝置？"
+      },
+      "p": {
+        "en": "Install once on a computer; Marcel then follows your account.",
+        "fr": "Installez Marcel une fois sur un ordinateur ; il suit ensuite votre compte.",
+        "zh": "在電腦上安裝一次；之後 Marcel 會跟著你的帳號。"
+      },
+      "blocks": [
+        {
+          "type": "specs",
+          "items": [
+            {
+              "h": {
+                "en": "Computer, with Claude Code (recommended)",
+                "fr": "Ordinateur, avec Claude Code (recommandé)",
+                "zh": "電腦，使用 Claude Code（建議）"
+              },
+              "p": [
+                {
+                  "en": "In the terminal, or in a local session of the Code tab in Claude Desktop. Everything works: multiple-choice questions, files in <code>docs/specs/</code>, final check.",
+                  "fr": "Dans le terminal, ou dans une session locale de l'onglet Code de Claude Desktop. Tout fonctionne : questions à choix, fichiers dans <code>docs/specs/</code>, contrôle final.",
+                  "zh": "在終端機中，或在 Claude Desktop「Code」分頁的本機工作階段中。所有功能都可用：選擇題、<code>docs/specs/</code> 中的檔案、最後的檢查。"
+                },
+                {
+                  "en": "Install with the two commands above. In the Code tab, once the marketplace is added: <b>+</b> → <b>Plugins</b> → <b>Browse plugins</b> → marcel.",
+                  "fr": "Installez avec les deux commandes ci-dessus. Dans l'onglet Code, une fois la marketplace ajoutée : <b>+</b> → <b>Plugins</b> → <b>Browse plugins</b> → marcel.",
+                  "zh": "用上方兩個指令安裝。在 Code 分頁中，加入 marketplace 後：<b>+</b> → <b>Plugins</b> → <b>Browse plugins</b> → marcel。"
+                }
+              ]
+            },
+            {
+              "h": {
+                "en": "Computer, no terminal: Cowork",
+                "fr": "Ordinateur, sans terminal : Cowork",
+                "zh": "電腦，不用終端機：Cowork"
+              },
+              "p": [
+                {
+                  "en": "In Claude Desktop, open Cowork → <b>Customize</b> → <b>Plugins</b> → <b>Add marketplace</b>, type <code>vincentlauriat/toolkit</code>, then <b>Discover</b> → marcel → <b>Install</b>.",
+                  "fr": "Dans Claude Desktop, ouvrez Cowork → <b>Customize</b> → <b>Plugins</b> → <b>Add marketplace</b>, tapez <code>vincentlauriat/toolkit</code>, puis <b>Discover</b> → marcel → <b>Install</b>.",
+                  "zh": "在 Claude Desktop 中開啟 Cowork → <b>Customize</b> → <b>Plugins</b> → <b>Add marketplace</b>，輸入 <code>vincentlauriat/toolkit</code>，再 <b>Discover</b> → marcel → <b>Install</b>。"
+                },
+                {
+                  "en": "Pick an empty folder, then write: “Marcel, help me frame my app: …”.",
+                  "fr": "Choisissez un dossier vide, puis écrivez : « Marcel, aide-moi à cadrer mon app : … ».",
+                  "zh": "選一個空資料夾，然後輸入：「Marcel，幫我規劃我的 app：……」。"
+                }
+              ]
+            },
+            {
+              "h": {
+                "en": "iPhone, or the claude.ai chat",
+                "fr": "iPhone, ou le chat claude.ai",
+                "zh": "iPhone，或 claude.ai 聊天"
+              },
+              "p": [
+                {
+                  "en": "Nothing to install on the phone: once Marcel is installed from a computer, it is on your account. Good for the interview and a first draft; questions may come as plain text, with no folder and no final check.",
+                  "fr": "Rien à installer sur le téléphone : une fois Marcel installé depuis un ordinateur, il est sur votre compte. Bien pour l'entretien et un premier jet ; les questions peuvent arriver en texte libre, sans dossier ni contrôle final.",
+                  "zh": "手機上不必安裝：從電腦安裝 Marcel 後，它就在你的帳號裡。適合訪談與初稿；問題可能以純文字出現，沒有資料夾，也沒有最後的檢查。"
+                },
+                {
+                  "en": "With Dispatch (Pro, Max or Ultra plans), you drive from the phone a Cowork task that runs on your computer, which must stay on with Claude Desktop open.",
+                  "fr": "Avec Dispatch (offres Pro, Max ou Ultra), vous pilotez depuis le téléphone une tâche Cowork qui tourne sur votre ordinateur, resté allumé avec Claude Desktop ouvert.",
+                  "zh": "透過 Dispatch（Pro、Max 或 Ultra 方案），可從手機操控在電腦上執行的 Cowork 任務；電腦需保持開機並開著 Claude Desktop。"
+                }
+              ]
+            },
+            {
+              "h": {
+                "en": "Claude Code on the web",
+                "fr": "Claude Code sur le web",
+                "zh": "網頁版 Claude Code"
+              },
+              "p": {
+                "en": "Cloud sessions on claude.ai/code don't install plugins. You need a GitHub repository with Marcel copied into <code>.claude/skills/marcel/</code>: for developers only.",
+                "fr": "Les sessions cloud de claude.ai/code n'installent pas les plugins. Il faut un dépôt GitHub avec Marcel copié dans <code>.claude/skills/marcel/</code> : réservé aux développeurs.",
+                "zh": "claude.ai/code 的雲端工作階段不會安裝外掛。需要一個 GitHub 儲存庫，並把 Marcel 複製到 <code>.claude/skills/marcel/</code>：僅適合開發者。"
+              }
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "t": {
+            "en": "Tested with Claude Code in the terminal. The other routes follow Anthropic's documentation and have not yet been tried with Marcel.",
+            "fr": "Testé avec Claude Code dans le terminal. Les autres parcours suivent la documentation d'Anthropic et n'ont pas encore été essayés avec Marcel.",
+            "zh": "已在終端機中的 Claude Code 測試。其他方式依照 Anthropic 的文件，尚未以 Marcel 實測。"
           }
         }
       ]

@@ -51,6 +51,8 @@ Frame an app — a new idea (greenfield) or an existing codebase (brownfield) �
 
 Produces `00-overview.md` (project presentation and document map, written last), `01-prd.md`, `02-trd.md`, `03-user-flows.md`, `04-design-brief.md`, `05-data-model.md` and `06-implementation-plan.md`. Unknown answers become flagged assumptions collected in the PRD's open questions; a traceability table links every priority feature to its screens, entities and tasks, and is checked before the skill reports done by a shipped script (`check.py`, with a self-test that proves it catches failures).
 
+No terminal? Marcel can also be installed from Cowork in Claude Desktop, then used from the claude.ai chat or the iPhone app: see *Which device?* in the guide.
+
 **User guide**: https://vincentlauriat.github.io/toolkit/marcel/ — what to prepare, a walkthrough of a session (new idea and existing codebase), how to read the result, building from the specs and keeping them up to date.
 
 **Requires** `python3` for the checker. Optional: `mmdc` ([mermaid-cli](https://github.com/mermaid-js/mermaid-cli)) to render the Mermaid diagrams; without it they are only checked statically.

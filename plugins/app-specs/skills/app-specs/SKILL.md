@@ -51,28 +51,30 @@ Look at the working directory and the invocation args before asking anything.
 
 ## Interview (New app)
 
-Existing project and Evolution modes do not run these rounds as such: derive them from the code and ask only what it cannot tell (see below).
-
-Ask in the user's language. Use `AskUserQuestion` for choices (max 4 questions per call, recommended option first with "(Recommandé)"), plain chat for open answers.
+Ask in the user's language. Use `AskUserQuestion` for choices (max 4 questions per call, 2–4 options each, recommended option first with "(Recommandé)"), plain chat for open answers. (Existing project and Evolution modes derive these rounds from the code instead — see below.)
 
 - **Skip what is already known.** Before each round, drop questions answered by the invocation args, earlier free-text answers (e.g. "pour moi et ma famille" answers Audience), or existing project files.
-- **"Je ne sais pas / propose"** is always acceptable: pick the option yourself, no follow-up question, and flag it as an assumption.
+- **"Je ne sais pas / propose"** is always acceptable: pick the option yourself, no follow-up question, and flag it as an assumption. In `AskUserQuestion` the automatic *Autre* field carries it: end each question text with « Pas sûr ? Prends la recommandée. »
+- **Plain words.** Many users are not developers. Each option's `description` says what the choice means for them (cost, where it runs, works offline, who sees the data), not how it works. The labels below are reference values: for a non-technical user, rephrase them plainly (« Lien de connexion par email », not « magic link »). In plain-chat rounds, give one short example answer per question.
+- **Which option to recommend** when nothing else decides: the most common, cheapest to host and easiest to get help with.
 
 **Round 1 — the idea (plain chat, one message).** Product name (even provisional), the problem in one sentence, who the users are, what they do today instead. Add one optional line, clearly skippable: reference products to imitate or avoid, brand colors/logo, constraints (deadline, budget, compliance, region).
 
 **Round 2 — framing (`AskUserQuestion`).**
-- Platform: Web / macOS natif / Mobile iOS+Android / Autre
-- Audience: Moi seul / Équipe interne / Clients B2B / Grand public
-- Accounts: Aucun compte / Email (magic link ou mot de passe) / SSO Google-Microsoft / Comptes avec rôles
-- Documents language — only if no project convention exists (e.g. a CLAUDE.md rule "doc files in English"). If one exists, don't ask: apply it and state it in the confirmation. An explicit user choice always overrides the convention.
+- Platform: Web / macOS natif / Mobile iOS+Android / Autre — « sur le téléphone » means Web (installable on the home screen) unless the app needs the stores, offline use or device features.
+- Audience: Moi seul / Mon équipe / Mes clients ou adhérents / Grand public
+- Accounts: Aucun compte / Email (magic link ou mot de passe) / SSO Google-Microsoft / Comptes avec rôles — recommend *Aucun compte* when the audience is the user alone, *Email* when other people must be recognised. Roles are not asked: derive them from the features (someone who manages the content is an admin).
+- Documents language — only if no convention exists (a rule such as "doc files in English" in the project's or the user's CLAUDE.md / AGENTS.md). If one exists, don't ask: apply it and state it in the confirmation. An explicit user choice always overrides the convention.
 
-**Round 3 — value and scope (plain chat).** The goal and one measurable success signal; the 3–7 main features (one line each, most important first); what is explicitly out of scope for v1; the main risks the user already sees.
+**Round 3 — value and scope (plain chat).** The goal and one success signal the user could check (e.g. « je note chaque sortie pendant 2 mois », « 10 clients paient d'ici juin »); the 3–7 main features (one line each, most important first); what is explicitly out of scope for v1; the risks the user already sees (« aucune idée » is fine: you will propose them).
 
 **Round 4 — technique and look (`AskUserQuestion`).** Tailor options to the platform.
-- Stack: 2–3 stacks fitting the platform (recommended first)
-- Data: Local uniquement / Cloud managé (ex. Supabase, Firebase) / Auto-hébergé / Base existante
-- External services (multiSelect): LLM/IA, paiement, email/notifications, cartes/géoloc
+- Stack: 2–3 stacks fitting the platform (recommended first); descriptions say, in plain words, cost, hosting and what each is good at.
+- Data: Local uniquement / Cloud managé (ex. Supabase, Firebase) / Auto-hébergé / Base existante. Recommend from the earlier answers: no accounts and one user → *Local uniquement* (plus an export backup); accounts, sharing or several devices → *Cloud managé*.
+- External services (multiSelect): Aucun / LLM/IA / Paiement / Email ou notifications — recommended first (email accounts imply *Email ou notifications*); others (maps, SMS…) through *Autre*.
 - Design tone: 3 contrasting adjective triads (e.g. "sobre, dense, pro" / "chaleureux, ludique, rond" / "premium, aéré, éditorial")
+
+Not asked, derived: the app's interface language (the conversation language unless the audience implies another) and its units, date format and currency (from the user's language and region). Both go in the confirmation.
 
 ## Existing project mode
 
@@ -116,10 +118,10 @@ Specs exist; do not re-run the interview.
 ## Confirmation (before writing anything)
 
 Present, in ≤25 lines:
-1. **Summary** — name, problem, users, platform, stack, docs language, output folder.
-2. **Features with priorities** — P0 = v1 must-have, P1 = v1 if time, P2 = later. If the user gave none, derive them from order and wording. Mark features you added yourself as « proposée » so the user sees them before accepting.
-3. **Contradictions found, each with your proposed resolution** — e.g. "local-only data + external LLM → API key needs a small server proxy". Also check that the success metric can actually be measured by some feature; if not, propose the missing feature. Check privacy too: a feature that stores user identifiers (analytics, audit log) against a "no personal data" statement or a compliance constraint.
-4. **Main assumptions** you will make.
+1. **Summary** — name, problem, users, platform, stack, app language, docs language, output folder. For a non-technical user, follow each technical choice with one plain parenthesis (e.g. « Dexie (les données restent sur ton téléphone) »); the full explanation goes in the specs, not here.
+2. **Features with priorities** — P0 = v1 must-have, P1 = v1 if time, P2 = later (for a non-technical user, write « indispensable / si le temps / plus tard »). If the user gave none, derive them from order and wording. Mark features you added yourself as « proposée » so the user sees them before accepting; in the PRD the marker goes in the benefit cell (existing projects: in the status cell, `planned, proposed`).
+3. **Contradictions found, each with your proposed resolution** — e.g. "local-only data + external LLM → API key needs a small server proxy". Also check that the success metric can actually be measured by some feature; if not, propose the missing feature. Check privacy too: a feature that stores user identifiers (analytics, audit log) against a "no personal data" statement or a compliance constraint; personal data of other people (names, emails) gets one line on where it is stored and how it is deleted. For a non-technical user, also raise who will build and maintain the app (Claude Code, a developer, themselves), and say so when an off-the-shelf product (booking, shop, forms) would cover the need.
+4. **Main assumptions** you will make, including units, date format and currency.
 
 Then ask "Je génère ?" via `AskUserQuestion` (Générer / Corriger quelque chose).
 
@@ -155,22 +157,30 @@ python3 -I <skill-dir>/check.py <output-folder> --self-test
 
 The checker proves structure, not truth: it does not verify that *observed* facts match the code. Re-read the cited files for the facts you wrote or changed.
 
-Fix gaps, then give the user: the file list, the top 3–5 open questions, and the suggested next step (step 1 of the implementation plan). Quote the last line of both commands rather than just saying they passed. Say whether Mermaid blocks were rendered (`mmdc`) or only checked statically.
+Fix gaps, then give the user: the file list, the top 3–5 open questions, and the suggested next step (step 1 of the implementation plan). Quote the last line of both commands rather than just saying they passed; for a non-technical user, add one plain sentence on what it means, and phrase the next step as what they do (e.g. hand the specs to Claude Code or a developer). Say whether Mermaid blocks were rendered (`mmdc`) or only checked statically.
 
 ## Common mistakes
+
+All modes:
 
 | Mistake | Fix |
 |---|---|
 | Asking all ~40 template fields one by one | 4 short rounds; derive the rest and flag as assumptions |
 | Re-asking what free text already answered | Skip it; restate it in the confirmation instead |
+| Jargon for a non-technical user | Plain option descriptions; one plain parenthesis per technical choice in the confirmation |
 | Resolving contradictory answers silently | Surface them in the confirmation with a proposed resolution |
 | Success metric that no feature can measure | Propose the missing feature in the confirmation |
 | Generic filler ("modern, clean UI", "fast") | Concrete values: hex colors, px sizes, ms targets, named screens |
 | Feature names drifting between documents | Reuse PRD names verbatim; the traceability table exposes drift |
 | Over-engineering a solo/local tool | Scale TRD and schema to the audience from round 2 |
+| Status or marker inside a feature/screen/entity name cell | Put it in its own cell; names stay bare |
+
+Existing project, evolution and update:
+
+| Mistake | Fix |
+|---|---|
 | Inventing a stack the code contradicts | Existing project mode: read the code first, cite files |
 | Treating an evolution or redesign as a new app | Read the code first; the specs describe the target, the plan migrates to it |
 | Regenerating specs the user hand-edited | Update mode: edit in place, log the change |
 | Renumbering stories or open questions in an update | Append new ones; strike removed ones through |
 | Copying a GUID, hostname or secret from the code into the specs | Name the setting only |
-| Status or marker inside a feature/screen/entity name cell | Put it in its own cell; names stay bare |

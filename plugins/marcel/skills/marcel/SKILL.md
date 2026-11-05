@@ -1,9 +1,9 @@
 ---
-name: app-specs
-description: Use when the user wants to frame, specify or kick off an app or product — a new idea, an existing codebase to document, or existing specs to update. Asks for a PRD, TRD, user flows, UI/UX design brief, data model or implementation plan, says "cadrer une app", "cahier des charges", "specs", "mettre à jour les specs", "/app-specs", or starts an empty project with only an idea.
+name: marcel
+description: Use when the user wants to frame, specify or kick off an app or product — a new idea, an existing codebase to document, or existing specs to update. Asks for a PRD, TRD, user flows, UI/UX design brief, data model or implementation plan, says "cadrer une app", "cahier des charges", "specs", "mettre à jour les specs", "/marcel", "Marcel", or starts an empty project with only an idea.
 ---
 
-# App specs — interview, then an overview and 6 framing documents
+# Marcel (app specs) — interview, then an overview and 6 framing documents
 
 ## Overview
 

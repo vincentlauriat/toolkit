@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify the seven app-specs documents (overview + six).
+"""Verify the seven Marcel documents (overview + six).
 
 Usage:
     python3 -I check.py <specs-dir>              check the documents

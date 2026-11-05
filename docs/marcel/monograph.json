@@ -1,18 +1,18 @@
 {
-  "name": "app-specs",
+  "name": "Marcel",
   "no": "10",
   "repo": "vincentlauriat/toolkit",
-  "url": "https://vincentlauriat.github.io/toolkit/app-specs/",
+  "url": "https://vincentlauriat.github.io/toolkit/marcel/",
   "accent": "#2dd4bf",
   "meta": {
-    "title": "app-specs — frame an app before coding · Claude Code plugin",
+    "title": "Marcel — frame an app before coding · Claude Code plugin",
     "description": "A Claude Code plugin that frames an app — a new idea (greenfield) or an existing codebase (brownfield) — as a project overview and six consistent documents: PRD, TRD, user flows, UI/UX design brief, data model and implementation plan.",
     "favicon": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0a0f'/%3E%3Cpath d='M14 22l10 10-10 10' fill='none' stroke='%23c084fc' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M32 42h18' stroke='%23c084fc' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E"
   },
   "role": {
-    "en": "Claude Code plugin · app framing, greenfield or brownfield",
-    "fr": "Plugin Claude Code · cadrage d'app, greenfield ou brownfield",
-    "zh": "Claude Code 外掛 · App 框定，全新或既有專案"
+    "en": "Frame an app before coding · Claude Code plugin, greenfield or brownfield",
+    "fr": "Cadrer une app avant de coder · plugin Claude Code, greenfield ou brownfield",
+    "zh": "寫程式之前先框定 App · Claude Code 外掛，全新或既有專案"
   },
   "thesis": {
     "en": "Frame an app — a new idea or an existing codebase.",
@@ -35,7 +35,7 @@
       }
     },
     {
-      "href": "https://github.com/vincentlauriat/toolkit/tree/main/plugins/app-specs",
+      "href": "https://github.com/vincentlauriat/toolkit/tree/main/plugins/marcel",
       "label": {
         "en": "View on GitHub",
         "fr": "Voir sur GitHub",
@@ -58,7 +58,7 @@
         "fr": "Installation",
         "zh": "安裝"
       },
-      "v": "<code>/plugin install app-specs@vincentlauriat-toolkit</code>"
+      "v": "<code>/plugin install marcel@vincentlauriat-toolkit</code>"
     },
     {
       "k": {
@@ -163,7 +163,7 @@
       "blocks": [
         {
           "type": "pre",
-          "code": "> /plugin marketplace add vincentlauriat/toolkit\n> /plugin install app-specs@vincentlauriat-toolkit"
+          "code": "> /plugin marketplace add vincentlauriat/toolkit\n> /plugin install marcel@vincentlauriat-toolkit"
         },
         {
           "type": "p",
@@ -311,9 +311,9 @@
           "type": "steps",
           "items": [
             {
-              "en": "Type <code>/app-specs</code>, optionally followed by your idea in quotes. Whatever you say there is not asked again.",
-              "fr": "Tapez <code>/app-specs</code>, éventuellement suivi de votre idée entre guillemets. Ce que vous y dites ne sera pas redemandé.",
-              "zh": "輸入 <code>/app-specs</code>，可在後面以引號附上你的構想。你在這裡說過的內容不會再被問一次。"
+              "en": "Type <code>/marcel</code>, optionally followed by your idea in quotes. Whatever you say there is not asked again.",
+              "fr": "Tapez <code>/marcel</code>, éventuellement suivi de votre idée entre guillemets. Ce que vous y dites ne sera pas redemandé.",
+              "zh": "輸入 <code>/marcel</code>，可在後面以引號附上你的構想。你在這裡說過的內容不會再被問一次。"
             },
             {
               "en": "Round 1, in chat — the idea: name, problem, users, what they do today.",
@@ -386,9 +386,9 @@
           "type": "steps",
           "items": [
             {
-              "en": "At the repo root, type <code>/app-specs</code> and choose <b>Document the existing code</b>.",
-              "fr": "À la racine du dépôt, tapez <code>/app-specs</code> et choisissez <b>Documenter l'existant</b>.",
-              "zh": "在程式庫根目錄輸入 <code>/app-specs</code>，選擇<b>記錄現有程式碼</b>。"
+              "en": "At the repo root, type <code>/marcel</code> and choose <b>Document the existing code</b>.",
+              "fr": "À la racine du dépôt, tapez <code>/marcel</code> et choisissez <b>Documenter l'existant</b>.",
+              "zh": "在程式庫根目錄輸入 <code>/marcel</code>，選擇<b>記錄現有程式碼</b>。"
             },
             {
               "en": "The skill reads the code — stack, routes, data, services, auth, tests, CI, release — plus the README and docs. On a large repo it delegates this to a sub-agent.",
@@ -523,9 +523,9 @@
           "type": "steps",
           "items": [
             {
-              "en": "In the same project, type <code>/app-specs</code>: existing specs switch it to update mode, with no new interview.",
-              "fr": "Dans le même projet, tapez <code>/app-specs</code> : la présence des specs bascule en mode mise à jour, sans nouvel entretien.",
-              "zh": "在同一個專案輸入 <code>/app-specs</code>：既有規格會讓它切換到更新模式，不重新訪談。"
+              "en": "In the same project, type <code>/marcel</code>: existing specs switch it to update mode, with no new interview.",
+              "fr": "Dans le même projet, tapez <code>/marcel</code> : la présence des specs bascule en mode mise à jour, sans nouvel entretien.",
+              "zh": "在同一個專案輸入 <code>/marcel</code>：既有規格會讓它切換到更新模式，不重新訪談。"
             },
             {
               "en": "Pick what changed — a feature, a technical choice, or a resync with the code — and describe it in one sentence.",
@@ -658,7 +658,7 @@
     "actions": [
       {
         "primary": true,
-        "href": "https://github.com/vincentlauriat/toolkit/tree/main/plugins/app-specs",
+        "href": "https://github.com/vincentlauriat/toolkit/tree/main/plugins/marcel",
         "label": {
           "en": "View on GitHub",
           "fr": "Voir sur GitHub",

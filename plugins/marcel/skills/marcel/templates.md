@@ -60,7 +60,7 @@ Goal: make technical choices explicit so the build does not rest on guesses.
 Goal: show every screen, every user path, and what happens on each click.
 
 - **Entry points** — how the user arrives (URL, install, deep link, notification…).
-- **Screen list** — table: screen | purpose | data needed. The first header cell must be *Screen* (translated): the checker reads screen names from this table only. Surfaces without UI that a feature relies on (job log, API client, MCP client) go here too, purpose starting "non-visual".
+- **Screen list** — table: screen | purpose | data needed. The first header cell must be *Screen* (translated: *Écran*, *Tela* in Brazilian docs, *Ecrã* in European Portuguese docs): the checker reads screen names from this table only. Surfaces without UI that a feature relies on (job log, API client, MCP client) go here too, purpose starting "non-visual".
 - **Main path** — `{{start screen}} -> {{action}} -> {{next screen}} -> {{success state}}`.
 - **Alternative paths** — cancel, edit, go back, skip.
 - **Action details** — for each action: trigger, validation, loading state, success state, error state, next screen (a table per screen works well).
@@ -96,9 +96,9 @@ Goal: define stored data, how it links, and who can access it.
 - **Relations** — one-to-one, one-to-many, many-to-many, foreign keys (an ER diagram in Mermaid is welcome).
 - **Data ownership** — which records belong to which users or teams.
 - **Authentication flow** — sign-up, sign-in, reset, session duration.
-- **Authorization rules** — matrix: entity × role → read / create / update / delete. Without accounts: one line stating that the single local user has full access to all entities, **naming each entity**, and why that is acceptable.
+- **Authorization rules** (heading translated: *Autorisation*, *Autorização*) — matrix: entity × role → read / create / update / delete. Without accounts: one line stating that the single local user has full access to all entities, **naming each entity**, and why that is acceptable.
 - **Data validation** — lengths, formats, uniqueness, business rules.
-- **Retention and deletion** — what is kept, deleted, exportable (GDPR if applicable).
+- **Retention and deletion** — what is kept, deleted, exportable (GDPR/RGPD or LGPD if applicable).
 - **Migrations and seed data** — initial data and the process for schema changes.
 
 ---
@@ -118,7 +118,7 @@ Give each task an id (`E2.1` = step 2, task 1) so other rows can depend on it; i
 
 Under each step heading, give an **estimated effort** (order of magnitude in days or sessions, flagged as a hypothesis). For each task, a table row: task | owner or agent | inputs | deliverable | done criterion | depends on.
 
-In existing-project mode, steps cover only the gap between the code and the PRD; shipped features appear in the traceability table with the *existing* marker and the path in Tasks (`existant : path` in French docs, `existing: path` in English).
+In existing-project mode, steps cover only the gap between the code and the PRD; shipped features appear in the traceability table with the *existing* marker and the path in Tasks (`existing: path`; other languages in SKILL.md's marker table).
 
 **Traceability** (required, at the end) — one row per P0 and P1 feature, names copied verbatim from the PRD:
 

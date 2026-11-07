@@ -382,9 +382,9 @@
                 "zh": "語言"
               },
               "p": {
-                "en": "The conversation follows your language. The documents follow your project's convention (for example a CLAUDE.md rule) unless you choose otherwise.",
-                "fr": "La conversation suit votre langue. Les documents suivent la convention du projet (par exemple une règle du CLAUDE.md), sauf si vous en décidez autrement.",
-                "zh": "對話會使用你的語言。文件則依循專案慣例（例如 CLAUDE.md 中的規則），除非你另有指定。"
+                "en": "Marcel speaks French, English, Brazilian Portuguese and European Portuguese, and follows the language you write in. The documents follow your project's convention (for example a CLAUDE.md rule) unless you choose otherwise.",
+                "fr": "Marcel parle français, anglais, portugais du Brésil et portugais du Portugal, et suit la langue dans laquelle vous écrivez. Les documents suivent la convention du projet (par exemple une règle du CLAUDE.md), sauf si vous en décidez autrement.",
+                "zh": "Marcel 會說法語、英語、巴西葡萄牙語和歐洲葡萄牙語，並跟隨你使用的語言。文件則依循專案慣例（例如 CLAUDE.md 中的規則），除非你另有指定。"
               }
             }
           ]
@@ -550,9 +550,9 @@
               "zh": "<code>01-prd.md</code> 的<b>待決問題</b>——先做決定。每題都附有建議；它們涵蓋所有會影響範圍、成本、架構或資料處理的假設。"
             },
             {
-              "en": "The flagged assumptions — search for <code>*(assumption)*</code> (<code>*(hypothèse)*</code> in French documents) and fix what is wrong.",
-              "fr": "Les hypothèses signalées — cherchez <code>*(hypothèse)*</code> (<code>*(assumption)*</code> dans des documents en anglais) et corrigez ce qui est faux.",
-              "zh": "標記的假設——搜尋 <code>*(assumption)*</code>（法文文件為 <code>*(hypothèse)*</code>），修正不正確之處。"
+              "en": "The flagged assumptions — search for <code>*(assumption)*</code> (<code>*(hypothèse)*</code> in French documents, <code>*(hipótese)*</code> in Portuguese) and fix what is wrong.",
+              "fr": "Les hypothèses signalées — cherchez <code>*(hypothèse)*</code> (<code>*(assumption)*</code> dans des documents en anglais, <code>*(hipótese)*</code> en portugais) et corrigez ce qui est faux.",
+              "zh": "標記的假設——搜尋 <code>*(assumption)*</code>（法文文件為 <code>*(hypothèse)*</code>，葡萄牙文文件為 <code>*(hipótese)*</code>），修正不正確之處。"
             },
             {
               "en": "<code>06-implementation-plan.md</code> — the build order, effort and checkpoints. Its traceability table shows which screens, entities and tasks each feature needs.",

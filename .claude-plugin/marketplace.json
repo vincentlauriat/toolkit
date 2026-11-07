@@ -20,7 +20,7 @@
     },
     {
       "name": "marcel",
-      "description": "Interview the user about an app idea, then write a project overview and six consistent framing documents: PRD, TRD, user flows, UI/UX design brief, data model and implementation plan. Also documents an existing codebase and updates existing specs in place.",
+      "description": "Interview the user about an app idea, then write a project overview and six consistent framing documents: PRD, TRD, user flows, UI/UX design brief, data model and implementation plan. Also documents an existing codebase and updates existing specs in place. Speaks French, English, Brazilian Portuguese and European Portuguese.",
       "source": "./plugins/marcel",
       "homepage": "https://vincentlauriat.github.io/toolkit/marcel/"
     }

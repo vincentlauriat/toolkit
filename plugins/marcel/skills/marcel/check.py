@@ -19,14 +19,14 @@ from pathlib import Path
 FILES = ["00-overview.md", "01-prd.md", "02-trd.md", "03-user-flows.md", "04-design-brief.md",
          "05-data-model.md", "06-implementation-plan.md"]
 PRIO = re.compile(r"^P[0-2]$")
-AUTH_HEADING = re.compile(r"authori[sz]ation|autorisation|permission|droits d", re.I)
+AUTH_HEADING = re.compile(r"authori[sz]ation|autorisation|autoriza[cç]|permiss|droits d|contro(lo|le) de acesso|regras de acesso", re.I)
 MERMAID_START = re.compile(
     r"^(graph|flowchart|sequenceDiagram|classDiagram|stateDiagram(-v2)?|erDiagram|"
     r"journey|gantt|pie|mindmap|timeline|C4Context|quadrantChart|gitGraph)\b")
 # Closed list: the first header cell of the UserFlows screen table, optionally followed
 # by "list"/"liste" or a parenthesis, e.g. "Screen", "Screens (UserFlows)", "Écran".
 SCREEN_HEADER = re.compile(
-    r"^(screens?|écrans?|pantallas?|telas?|schermat[ae]|schermi|bildschirme?|ansichte?n?|surfaces?)"
+    r"^(screens?|écrans?|ecr[ãa]s?|pantallas?|telas?|schermat[ae]|schermi|bildschirme?|ansichte?n?|surfaces?|superf[ií]cies?)"
     r"(\s+(list|liste|lista))?(\s*\(.*\))?$", re.I)
 
 
@@ -195,6 +195,16 @@ def self_test(d):
                       ("`_id`", "_id")):
         if plain(raw) != want:
             print(f"FAIL plain({raw!r}) = {plain(raw)!r}, expected {want!r}")
+            return 1
+    for regex, heading, want in ((SCREEN_HEADER, "Screen", True), (SCREEN_HEADER, "Écrans", True),
+                                 (SCREEN_HEADER, "Tela", True), (SCREEN_HEADER, "Ecrã", True),
+                                 (SCREEN_HEADER, "Ecrãs (UserFlows)", True), (SCREEN_HEADER, "Ação", False),
+                                 (AUTH_HEADING, "Authorization rules", True), (AUTH_HEADING, "Droits d'accès", True),
+                                 (AUTH_HEADING, "Regras de autorização", True), (AUTH_HEADING, "Permissões", True),
+                                 (AUTH_HEADING, "Controlo de acessos", True), (AUTH_HEADING, "Controle de acesso", True),
+                                 (AUTH_HEADING, "Fluxo de autenticação", False)):
+        if bool(regex.search(heading)) != want:
+            print(f"FAIL heading {heading!r}: expected match={want}")
             return 1
     errs = check(d)
     if errs:
